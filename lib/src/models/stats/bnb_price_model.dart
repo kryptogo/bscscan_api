@@ -2,23 +2,23 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanPriceModel with EquatableMixin {
+class BscScanPriceModel with EquatableMixin {
   final String status;
   final String message;
-  final EtherScanPriceResult result;
+  final BscScanPriceResult result;
 
-  EtherScanPriceModel({
+  BscScanPriceModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanPriceModel copyWith({
+  BscScanPriceModel copyWith({
     String? status,
     String? message,
-    EtherScanPriceResult? result,
+    BscScanPriceResult? result,
   }) {
-    return EtherScanPriceModel(
+    return BscScanPriceModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -33,26 +33,26 @@ class EtherScanPriceModel with EquatableMixin {
     };
   }
 
-  factory EtherScanPriceModel.empty() {
-    return EtherScanPriceModel(
+  factory BscScanPriceModel.empty() {
+    return BscScanPriceModel(
       status: 'empty',
       message: '',
-      result: EtherScanPriceResult.empty(),
+      result: BscScanPriceResult.empty(),
     );
   }
 
-  factory EtherScanPriceModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanPriceModel(
+  factory BscScanPriceModel.fromMap(Map<String, dynamic> map) {
+    return BscScanPriceModel(
       status: map['status'],
       message: map['message'],
-      result: EtherScanPriceResult.fromMap(map['result']),
+      result: BscScanPriceResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanPriceModel.fromJson(String source) =>
-      EtherScanPriceModel.fromMap(json.decode(source));
+  factory BscScanPriceModel.fromJson(String source) =>
+      BscScanPriceModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -61,26 +61,26 @@ class EtherScanPriceModel with EquatableMixin {
   List<Object> get props => [status, message, result];
 }
 
-class EtherScanPriceResult with EquatableMixin {
+class BscScanPriceResult with EquatableMixin {
   final String ethbtc;
   final String ethbtc_timestamp;
   final String ethusd;
   final String ethusd_timestamp;
 
-  EtherScanPriceResult({
+  BscScanPriceResult({
     required this.ethbtc,
     required this.ethbtc_timestamp,
     required this.ethusd,
     required this.ethusd_timestamp,
   });
 
-  EtherScanPriceResult copyWith({
+  BscScanPriceResult copyWith({
     String? ethbtc,
     String? ethbtc_timestamp,
     String? ethusd,
     String? ethusd_timestamp,
   }) {
-    return EtherScanPriceResult(
+    return BscScanPriceResult(
       ethbtc: ethbtc ?? this.ethbtc,
       ethbtc_timestamp: ethbtc_timestamp ?? this.ethbtc_timestamp,
       ethusd: ethusd ?? this.ethusd,
@@ -97,8 +97,8 @@ class EtherScanPriceResult with EquatableMixin {
     };
   }
 
-  factory EtherScanPriceResult.empty() {
-    return EtherScanPriceResult(
+  factory BscScanPriceResult.empty() {
+    return BscScanPriceResult(
       ethbtc: '',
       ethbtc_timestamp: '',
       ethusd: '',
@@ -106,8 +106,8 @@ class EtherScanPriceResult with EquatableMixin {
     );
   }
 
-  factory EtherScanPriceResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanPriceResult(
+  factory BscScanPriceResult.fromMap(Map<String, dynamic> map) {
+    return BscScanPriceResult(
       ethbtc: map['ethbtc'],
       ethbtc_timestamp: map['ethbtc_timestamp'],
       ethusd: map['ethusd'],
@@ -117,8 +117,8 @@ class EtherScanPriceResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanPriceResult.fromJson(String source) =>
-      EtherScanPriceResult.fromMap(json.decode(source));
+  factory BscScanPriceResult.fromJson(String source) =>
+      BscScanPriceResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

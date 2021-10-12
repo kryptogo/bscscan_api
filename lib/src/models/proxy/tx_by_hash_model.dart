@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanTxByHashModel with EquatableMixin {
+class BscScanTxByHashModel with EquatableMixin {
   final String jsonrpc;
   final int id;
-  final EtherScanTxByHashModelResult result;
-  EtherScanTxByHashModel({
+  final BscScanTxByHashModelResult result;
+  BscScanTxByHashModel({
     required this.jsonrpc,
     required this.id,
     required this.result,
   });
 
-  EtherScanTxByHashModel copyWith({
+  BscScanTxByHashModel copyWith({
     String? jsonrpc,
     int? id,
-    EtherScanTxByHashModelResult? result,
+    BscScanTxByHashModelResult? result,
   }) {
-    return EtherScanTxByHashModel(
+    return BscScanTxByHashModel(
       jsonrpc: jsonrpc ?? this.jsonrpc,
       id: id ?? this.id,
       result: result ?? this.result,
@@ -32,26 +32,26 @@ class EtherScanTxByHashModel with EquatableMixin {
     };
   }
 
-  factory EtherScanTxByHashModel.empty() {
-    return EtherScanTxByHashModel(
+  factory BscScanTxByHashModel.empty() {
+    return BscScanTxByHashModel(
       jsonrpc: '',
       id: 0,
-      result: EtherScanTxByHashModelResult.empty(),
+      result: BscScanTxByHashModelResult.empty(),
     );
   }
 
-  factory EtherScanTxByHashModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxByHashModel(
+  factory BscScanTxByHashModel.fromMap(Map<String, dynamic> map) {
+    return BscScanTxByHashModel(
       jsonrpc: map['jsonrpc'],
       id: map['id'],
-      result: EtherScanTxByHashModelResult.fromMap(map['result']),
+      result: BscScanTxByHashModelResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxByHashModel.fromJson(String source) =>
-      EtherScanTxByHashModel.fromMap(json.decode(source));
+  factory BscScanTxByHashModel.fromJson(String source) =>
+      BscScanTxByHashModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -60,7 +60,7 @@ class EtherScanTxByHashModel with EquatableMixin {
   List<Object> get props => [jsonrpc, id, result];
 }
 
-class EtherScanTxByHashModelResult with EquatableMixin {
+class BscScanTxByHashModelResult with EquatableMixin {
   final String blockHash;
   final String blockNumber;
   final String from;
@@ -77,7 +77,7 @@ class EtherScanTxByHashModelResult with EquatableMixin {
   final String r;
   final String s;
 
-  EtherScanTxByHashModelResult({
+  BscScanTxByHashModelResult({
     required this.blockHash,
     required this.blockNumber,
     required this.from,
@@ -95,7 +95,7 @@ class EtherScanTxByHashModelResult with EquatableMixin {
     required this.s,
   });
 
-  EtherScanTxByHashModelResult copyWith({
+  BscScanTxByHashModelResult copyWith({
     String? blockHash,
     String? blockNumber,
     String? from,
@@ -112,7 +112,7 @@ class EtherScanTxByHashModelResult with EquatableMixin {
     String? r,
     String? s,
   }) {
-    return EtherScanTxByHashModelResult(
+    return BscScanTxByHashModelResult(
       blockHash: blockHash ?? this.blockHash,
       blockNumber: blockNumber ?? this.blockNumber,
       from: from ?? this.from,
@@ -151,8 +151,8 @@ class EtherScanTxByHashModelResult with EquatableMixin {
     };
   }
 
-  factory EtherScanTxByHashModelResult.empty() {
-    return EtherScanTxByHashModelResult(
+  factory BscScanTxByHashModelResult.empty() {
+    return BscScanTxByHashModelResult(
       blockHash: '',
       blockNumber: '',
       from: '',
@@ -171,8 +171,8 @@ class EtherScanTxByHashModelResult with EquatableMixin {
     );
   }
 
-  factory EtherScanTxByHashModelResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxByHashModelResult(
+  factory BscScanTxByHashModelResult.fromMap(Map<String, dynamic> map) {
+    return BscScanTxByHashModelResult(
       blockHash: map['blockHash'],
       blockNumber: map['blockNumber'],
       from: map['from'],
@@ -193,8 +193,8 @@ class EtherScanTxByHashModelResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxByHashModelResult.fromJson(String source) =>
-      EtherScanTxByHashModelResult.fromMap(json.decode(source));
+  factory BscScanTxByHashModelResult.fromJson(String source) =>
+      BscScanTxByHashModelResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

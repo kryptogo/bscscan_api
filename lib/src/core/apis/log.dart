@@ -1,8 +1,8 @@
-import 'package:etherscan_api/src/etherscan_api.dart';
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/models/models.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/models/models.dart';
 
-extension EthLog on EtherscanAPI {
+extension BscLog on BscscanAPI {
   /// The Event Log API was designed to provide an alternative to the native eth_getLogs.
   /// returns the status of a specific transaction hash
   ///
@@ -27,7 +27,7 @@ extension EthLog on EtherscanAPI {
   /// `topic0_2_opr` - and | or between topic0 & topic2
   ///
 
-  Future<EtherScanLogModel> getLogs({
+  Future<BscScanLogModel> getLogs({
     required String? address,
     String? fromBlock,
     String? toBlock,
@@ -91,8 +91,8 @@ extension EthLog on EtherscanAPI {
       query.putIfAbsent('topic3', () => topic3);
     }
     return (await get(query)).fold(
-      (l) => EtherScanLogModel.empty(),
-      (r) => EtherScanLogModel.fromJson(r),
+      (l) => BscScanLogModel.empty(),
+      (r) => BscScanLogModel.fromJson(r),
     );
   }
 }

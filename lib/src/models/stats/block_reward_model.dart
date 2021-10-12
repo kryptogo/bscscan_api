@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanBlockRewardModel with EquatableMixin {
+class BscScanBlockRewardModel with EquatableMixin {
   final String status;
   final String message;
-  final EtherScanBlockRewardResult result;
-  EtherScanBlockRewardModel({
+  final BscScanBlockRewardResult result;
+  BscScanBlockRewardModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanBlockRewardModel copyWith({
+  BscScanBlockRewardModel copyWith({
     String? status,
     String? message,
-    EtherScanBlockRewardResult? result,
+    BscScanBlockRewardResult? result,
   }) {
-    return EtherScanBlockRewardModel(
+    return BscScanBlockRewardModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,26 +32,26 @@ class EtherScanBlockRewardModel with EquatableMixin {
     };
   }
 
-  factory EtherScanBlockRewardModel.empty() {
-    return EtherScanBlockRewardModel(
+  factory BscScanBlockRewardModel.empty() {
+    return BscScanBlockRewardModel(
       status: 'empty',
       message: '',
-      result: EtherScanBlockRewardResult.empty(),
+      result: BscScanBlockRewardResult.empty(),
     );
   }
 
-  factory EtherScanBlockRewardModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanBlockRewardModel(
+  factory BscScanBlockRewardModel.fromMap(Map<String, dynamic> map) {
+    return BscScanBlockRewardModel(
       status: map['status'],
       message: map['message'],
-      result: EtherScanBlockRewardResult.fromMap(map['result']),
+      result: BscScanBlockRewardResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBlockRewardModel.fromJson(String source) =>
-      EtherScanBlockRewardModel.fromMap(json.decode(source));
+  factory BscScanBlockRewardModel.fromJson(String source) =>
+      BscScanBlockRewardModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
@@ -60,14 +60,14 @@ class EtherScanBlockRewardModel with EquatableMixin {
   List<Object> get props => [status, message, result];
 }
 
-class EtherScanBlockRewardResult with EquatableMixin {
+class BscScanBlockRewardResult with EquatableMixin {
   final String blockNumber;
   final String timeStamp;
   final String blockMiner;
   final String blockReward;
   final List<dynamic> uncles;
   final String uncleInclusionReward;
-  EtherScanBlockRewardResult({
+  BscScanBlockRewardResult({
     required this.blockNumber,
     required this.timeStamp,
     required this.blockMiner,
@@ -76,7 +76,7 @@ class EtherScanBlockRewardResult with EquatableMixin {
     required this.uncleInclusionReward,
   });
 
-  EtherScanBlockRewardResult copyWith({
+  BscScanBlockRewardResult copyWith({
     String? blockNumber,
     String? timeStamp,
     String? blockMiner,
@@ -84,7 +84,7 @@ class EtherScanBlockRewardResult with EquatableMixin {
     List<dynamic>? uncles,
     String? uncleInclusionReward,
   }) {
-    return EtherScanBlockRewardResult(
+    return BscScanBlockRewardResult(
       blockNumber: blockNumber ?? this.blockNumber,
       timeStamp: timeStamp ?? this.timeStamp,
       blockMiner: blockMiner ?? this.blockMiner,
@@ -105,8 +105,8 @@ class EtherScanBlockRewardResult with EquatableMixin {
     };
   }
 
-  factory EtherScanBlockRewardResult.empty() {
-    return EtherScanBlockRewardResult(
+  factory BscScanBlockRewardResult.empty() {
+    return BscScanBlockRewardResult(
       blockNumber: '',
       timeStamp: '',
       blockMiner: '',
@@ -116,8 +116,8 @@ class EtherScanBlockRewardResult with EquatableMixin {
     );
   }
 
-  factory EtherScanBlockRewardResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanBlockRewardResult(
+  factory BscScanBlockRewardResult.fromMap(Map<String, dynamic> map) {
+    return BscScanBlockRewardResult(
       blockNumber: map['blockNumber'],
       timeStamp: map['timeStamp'],
       blockMiner: map['blockMiner'],
@@ -129,8 +129,8 @@ class EtherScanBlockRewardResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBlockRewardResult.fromJson(String source) =>
-      EtherScanBlockRewardResult.fromMap(json.decode(source));
+  factory BscScanBlockRewardResult.fromJson(String source) =>
+      BscScanBlockRewardResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

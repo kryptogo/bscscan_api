@@ -1,9 +1,9 @@
-import 'package:etherscan_api/src/etherscan_api.dart';
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/models/models.dart';
-import 'package:etherscan_api/src/models/stats/eth_price_model.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/models/models.dart';
+import 'package:bscscan_api/src/models/stats/bnb_price_model.dart';
 
-extension EthStats on EtherscanAPI {
+extension BscStats on BscscanAPI {
   /// Returns the supply of Tokens
   ///
   ///  `tokenname` - Name of the Token
@@ -13,15 +13,15 @@ extension EthStats on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var supply = eth.tokenSupply(
+  /// var supply = bsc.tokenSupply(
   ///     tokenname: null,
   ///     contractAddress: '0x57d90b64a1a57749b0f932f1a3395792e12e7055'
   /// );
   /// ```
-  /// Result returned in Wei, to get value in Ether divide resultAbove/1000000000000000000)
+  /// Result returned in Wei, to get value in BNB divide resultAbove/1000000000000000000)
   ///
 
-  Future<EtherScanSupplyModel> tokenSupply({
+  Future<BscScanSupplyModel> tokenSupply({
     String? tokenName,
     String? contractAddress,
   }) async {
@@ -43,23 +43,23 @@ extension EthStats on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanSupplyModel.empty(),
-      (r) => EtherScanSupplyModel.fromJson(r),
+      (l) => BscScanSupplyModel.empty(),
+      (r) => BscScanSupplyModel.fromJson(r),
     );
   }
 
-  /// Returns total supply of ether
+  /// Returns total supply of bnb
   ///
   /// Example
   ///
   ///``` dart
-  /// var supply = eth.ethSupply();
+  /// var supply = bsc.bnbSupply();
   ///```
   ///
 
-  Future<EtherScanSupplyModel> ethSupply() async {
+  Future<BscScanSupplyModel> bnbSupply() async {
     const module = 'stats';
-    const action = 'ethsupply';
+    const action = 'bnbsupply';
 
     Map<String, dynamic>? query = {
       'module': module,
@@ -68,8 +68,8 @@ extension EthStats on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanSupplyModel.empty(),
-      (r) => EtherScanSupplyModel.fromJson(r),
+      (l) => BscScanSupplyModel.empty(),
+      (r) => BscScanSupplyModel.fromJson(r),
     );
   }
 
@@ -78,13 +78,13 @@ extension EthStats on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var price = eth.ethprice();
+  /// var price = bsc.ethprice();
   /// ```
   ///
 
-  Future<EtherScanPriceModel> ethPrice() async {
+  Future<BscScanPriceModel> bnbPrice() async {
     const module = 'stats';
-    const action = 'ethprice';
+    const action = 'bnbprice';
 
     Map<String, dynamic>? query = {
       'module': module,
@@ -93,8 +93,8 @@ extension EthStats on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanPriceModel.empty(),
-      (r) => EtherScanPriceModel.fromJson(r),
+      (l) => BscScanPriceModel.empty(),
+      (r) => BscScanPriceModel.fromJson(r),
     );
   }
 }

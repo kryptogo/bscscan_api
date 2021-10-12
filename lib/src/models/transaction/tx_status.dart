@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanTxStatusModel with EquatableMixin {
+class BscScanTxStatusModel with EquatableMixin {
   final String status;
   final String message;
-  final EtherScanTxStatusResult result;
-  EtherScanTxStatusModel({
+  final BscScanTxStatusResult result;
+  BscScanTxStatusModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanTxStatusModel copyWith({
+  BscScanTxStatusModel copyWith({
     String? status,
     String? message,
-    EtherScanTxStatusResult? result,
+    BscScanTxStatusResult? result,
   }) {
-    return EtherScanTxStatusModel(
+    return BscScanTxStatusModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,26 +32,26 @@ class EtherScanTxStatusModel with EquatableMixin {
     };
   }
 
-  factory EtherScanTxStatusModel.empty() {
-    return EtherScanTxStatusModel(
+  factory BscScanTxStatusModel.empty() {
+    return BscScanTxStatusModel(
       status: 'empty',
       message: '',
-      result: EtherScanTxStatusResult.empty(),
+      result: BscScanTxStatusResult.empty(),
     );
   }
 
-  factory EtherScanTxStatusModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxStatusModel(
+  factory BscScanTxStatusModel.fromMap(Map<String, dynamic> map) {
+    return BscScanTxStatusModel(
       status: map['status'],
       message: map['message'],
-      result: EtherScanTxStatusResult.fromMap(map['result']),
+      result: BscScanTxStatusResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxStatusModel.fromJson(String source) =>
-      EtherScanTxStatusModel.fromMap(json.decode(source));
+  factory BscScanTxStatusModel.fromJson(String source) =>
+      BscScanTxStatusModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
@@ -60,19 +60,19 @@ class EtherScanTxStatusModel with EquatableMixin {
   List<Object> get props => [status, message, result];
 }
 
-class EtherScanTxStatusResult with EquatableMixin {
+class BscScanTxStatusResult with EquatableMixin {
   final String isError;
   final String errDescription;
-  EtherScanTxStatusResult({
+  BscScanTxStatusResult({
     required this.isError,
     required this.errDescription,
   });
 
-  EtherScanTxStatusResult copyWith({
+  BscScanTxStatusResult copyWith({
     String? isError,
     String? errDescription,
   }) {
-    return EtherScanTxStatusResult(
+    return BscScanTxStatusResult(
       isError: isError ?? this.isError,
       errDescription: errDescription ?? this.errDescription,
     );
@@ -85,15 +85,15 @@ class EtherScanTxStatusResult with EquatableMixin {
     };
   }
 
-  factory EtherScanTxStatusResult.empty() {
-    return EtherScanTxStatusResult(
+  factory BscScanTxStatusResult.empty() {
+    return BscScanTxStatusResult(
       isError: '',
       errDescription: '',
     );
   }
 
-  factory EtherScanTxStatusResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxStatusResult(
+  factory BscScanTxStatusResult.fromMap(Map<String, dynamic> map) {
+    return BscScanTxStatusResult(
       isError: map['isError'],
       errDescription: map['errDescription'],
     );
@@ -101,8 +101,8 @@ class EtherScanTxStatusResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxStatusResult.fromJson(String source) =>
-      EtherScanTxStatusResult.fromMap(json.decode(source));
+  factory BscScanTxStatusResult.fromJson(String source) =>
+      BscScanTxStatusResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

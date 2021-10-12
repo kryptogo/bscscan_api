@@ -1,9 +1,9 @@
-import 'package:etherscan_api/src/etherscan_api.dart';
-import 'package:etherscan_api/src/models/contract/abi_model.dart';
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/models/contract/source_code_model.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
+import 'package:bscscan_api/src/models/contract/abi_model.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/models/contract/source_code_model.dart';
 
-extension EthContract on EtherscanAPI {
+extension BscContract on BscscanAPI {
   /// Returns the ABI/Interface of a given contract
   ///
   /// `address` - Contract address
@@ -17,7 +17,7 @@ extension EthContract on EtherscanAPI {
   ///  ..memberId('0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359')
   /// ```
   ///
-  Future<EtherScanAbiModel> getAbi({
+  Future<BscScanAbiModel> getAbi({
     required String? address,
   }) async {
     const module = 'contract';
@@ -31,8 +31,8 @@ extension EthContract on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanAbiModel.empty(),
-      (r) => EtherScanAbiModel.fromJson(r),
+      (l) => BscScanAbiModel.empty(),
+      (r) => BscScanAbiModel.fromJson(r),
     );
   }
 
@@ -48,7 +48,7 @@ extension EthContract on EtherscanAPI {
   /// )
   /// ```
   ///
-  Future<EtherscanSourceCodeModel> getSourceCode({
+  Future<BscscanSourceCodeModel> getSourceCode({
     required String? address,
   }) async {
     const module = 'contract';
@@ -62,8 +62,8 @@ extension EthContract on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherscanSourceCodeModel.empty(),
-      (r) => EtherscanSourceCodeModel.fromJson(r),
+      (l) => BscscanSourceCodeModel.empty(),
+      (r) => BscscanSourceCodeModel.fromJson(r),
     );
   }
 }

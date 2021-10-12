@@ -1,6 +1,6 @@
-library etherscan_api;
+library bscscan_api;
 
-export 'src/etherscan_api.dart';
+export 'src/bscscan_api.dart';
 export 'src/core/apis/log.dart';
 export 'src/core/apis/proxy.dart';
 export 'src/core/apis/block.dart';

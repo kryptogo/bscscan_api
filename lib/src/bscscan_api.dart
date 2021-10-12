@@ -1,33 +1,33 @@
 import 'core/helper/get_request.dart';
 
-class EtherscanAPI {
+class BscscanAPI {
   final String apiKey;
-  final EthChain chain;
+  final BscChain chain;
   final bool enableLogs;
   final Duration? timeout;
 
-  EtherscanAPI({
+  BscscanAPI({
     required this.apiKey,
-    this.chain = EthChain.mainnet,
+    this.chain = BscChain.mainnet,
     this.enableLogs = true,
     this.timeout,
   });
 }
 
-/// EtherScan sort order
-enum EtherSort { asc, desc }
+/// BscScan sort order
+enum BscSort { asc, desc }
 
 /// Describe num extension
 extension DescribeEnum on Object {
   String get str => describeEnum(this);
 }
 
-/// Ethereum chain type
-enum EthChain { mainnet, ropsten, kovan, rinkeby, homestead }
+/// BSC chain type
+enum BscChain { mainnet, testnet }
 
-extension EthChainString on EthChain {
+extension BscChainString on BscChain {
   String get chainName => str;
-  String get chainApiUrl => ETH_API_URLS[chainName]!;
+  String get chainApiUrl => BSC_API_URLS[chainName]!;
 }
 
 // This method exists as a workaround for https://github.com/dart-lang/sdk/issues/30021
@@ -38,13 +38,13 @@ extension EthChainString on EthChain {
 /// {@tool snippet}
 ///
 /// ```dart
-/// enum EthChain {
-///   mainnet, ropsten, kovan, rinkeby, homestead
+/// enum BscChain {
+///   mainnet, testnet
 /// }
 ///
 /// void validateDescribeEnum() {
-///   assert(EthChain.ropsten.toString() == 'EthChain.ropsten');
-///   assert(describeEnum(EthChain.ropsten) == 'ropsten');
+///   assert(BscChain.testnet.toString() == 'BscChain.testnet');
+///   assert(describeEnum(BscChain.testnet) == 'testnet');
 /// }
 /// ```
 /// {@end-tool}

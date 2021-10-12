@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherscanSourceCodeModel with EquatableMixin {
+class BscscanSourceCodeModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherscanSourceCodeResult?>? result;
-  EtherscanSourceCodeModel({
+  final List<BscscanSourceCodeResult?>? result;
+  BscscanSourceCodeModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherscanSourceCodeModel copyWith({
+  BscscanSourceCodeModel copyWith({
     String? status,
     String? message,
-    List<EtherscanSourceCodeResult>? result,
+    List<BscscanSourceCodeResult>? result,
   }) {
-    return EtherscanSourceCodeModel(
+    return BscscanSourceCodeModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,21 +32,21 @@ class EtherscanSourceCodeModel with EquatableMixin {
     };
   }
 
-  factory EtherscanSourceCodeModel.empty() {
-    return EtherscanSourceCodeModel(
+  factory BscscanSourceCodeModel.empty() {
+    return BscscanSourceCodeModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherscanSourceCodeModel.fromMap(Map<String, dynamic> map) {
-    return EtherscanSourceCodeModel(
+  factory BscscanSourceCodeModel.fromMap(Map<String, dynamic> map) {
+    return BscscanSourceCodeModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherscanSourceCodeResult>.from(
+      result: List<BscscanSourceCodeResult>.from(
         map['result']?.map(
-          (x) => EtherscanSourceCodeResult.fromMap(x),
+          (x) => BscscanSourceCodeResult.fromMap(x),
         ),
       ),
     );
@@ -54,8 +54,8 @@ class EtherscanSourceCodeModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherscanSourceCodeModel.fromJson(String source) =>
-      EtherscanSourceCodeModel.fromMap(json.decode(source));
+  factory BscscanSourceCodeModel.fromJson(String source) =>
+      BscscanSourceCodeModel.fromMap(json.decode(source));
 
   @override
   List<Object> get props => [status, message, result ?? []];
@@ -64,7 +64,7 @@ class EtherscanSourceCodeModel with EquatableMixin {
   bool get stringify => true;
 }
 
-class EtherscanSourceCodeResult with EquatableMixin {
+class BscscanSourceCodeResult with EquatableMixin {
   final String sourceCode;
   final String abi;
   final String contractName;
@@ -79,7 +79,7 @@ class EtherscanSourceCodeResult with EquatableMixin {
   final String implementation;
   final String swarmSource;
 
-  EtherscanSourceCodeResult({
+  BscscanSourceCodeResult({
     required this.sourceCode,
     required this.abi,
     required this.contractName,
@@ -95,7 +95,7 @@ class EtherscanSourceCodeResult with EquatableMixin {
     required this.swarmSource,
   });
 
-  EtherscanSourceCodeResult copyWith({
+  BscscanSourceCodeResult copyWith({
     String? sourceCode,
     String? abi,
     String? contractName,
@@ -110,7 +110,7 @@ class EtherscanSourceCodeResult with EquatableMixin {
     String? implementation,
     String? swarmSource,
   }) {
-    return EtherscanSourceCodeResult(
+    return BscscanSourceCodeResult(
       sourceCode: sourceCode ?? this.sourceCode,
       abi: abi ?? this.abi,
       contractName: contractName ?? this.contractName,
@@ -145,8 +145,8 @@ class EtherscanSourceCodeResult with EquatableMixin {
     };
   }
 
-  factory EtherscanSourceCodeResult.fromMap(Map<String, dynamic> map) {
-    return EtherscanSourceCodeResult(
+  factory BscscanSourceCodeResult.fromMap(Map<String, dynamic> map) {
+    return BscscanSourceCodeResult(
       sourceCode: map['SourceCode'],
       abi: map['ABI'],
       contractName: map['ContractName'],
@@ -165,8 +165,8 @@ class EtherscanSourceCodeResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherscanSourceCodeResult.fromJson(String source) =>
-      EtherscanSourceCodeResult.fromMap(json.decode(source));
+  factory BscscanSourceCodeResult.fromJson(String source) =>
+      BscscanSourceCodeResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

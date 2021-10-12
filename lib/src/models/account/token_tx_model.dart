@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanMintedTokenTxModel with EquatableMixin {
+class BscScanMintedTokenTxModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherScanMintedTokenTxResult>? result;
-  EtherScanMintedTokenTxModel({
+  final List<BscScanMintedTokenTxResult>? result;
+  BscScanMintedTokenTxModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanMintedTokenTxModel copyWith({
+  BscScanMintedTokenTxModel copyWith({
     String? status,
     String? message,
-    List<EtherScanMintedTokenTxResult>? result,
+    List<BscScanMintedTokenTxResult>? result,
   }) {
-    return EtherScanMintedTokenTxModel(
+    return BscScanMintedTokenTxModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,27 +32,27 @@ class EtherScanMintedTokenTxModel with EquatableMixin {
     };
   }
 
-  factory EtherScanMintedTokenTxModel.empty() {
-    return EtherScanMintedTokenTxModel(
+  factory BscScanMintedTokenTxModel.empty() {
+    return BscScanMintedTokenTxModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherScanMintedTokenTxModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanMintedTokenTxModel(
+  factory BscScanMintedTokenTxModel.fromMap(Map<String, dynamic> map) {
+    return BscScanMintedTokenTxModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherScanMintedTokenTxResult>.from(
-          map['result']?.map((x) => EtherScanMintedTokenTxResult.fromMap(x))),
+      result: List<BscScanMintedTokenTxResult>.from(
+          map['result']?.map((x) => BscScanMintedTokenTxResult.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanMintedTokenTxModel.fromJson(String source) =>
-      EtherScanMintedTokenTxModel.fromMap(json.decode(source));
+  factory BscScanMintedTokenTxModel.fromJson(String source) =>
+      BscScanMintedTokenTxModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
@@ -61,7 +61,7 @@ class EtherScanMintedTokenTxModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherScanMintedTokenTxResult with EquatableMixin {
+class BscScanMintedTokenTxResult with EquatableMixin {
   final String blockNumber;
   final String timeStamp;
   final String hash;
@@ -82,7 +82,7 @@ class EtherScanMintedTokenTxResult with EquatableMixin {
   final String input;
   final String confirmations;
 
-  EtherScanMintedTokenTxResult({
+  BscScanMintedTokenTxResult({
     required this.blockNumber,
     required this.timeStamp,
     required this.hash,
@@ -104,7 +104,7 @@ class EtherScanMintedTokenTxResult with EquatableMixin {
     required this.confirmations,
   });
 
-  EtherScanMintedTokenTxResult copyWith({
+  BscScanMintedTokenTxResult copyWith({
     String? blockNumber,
     String? timeStamp,
     String? hash,
@@ -125,7 +125,7 @@ class EtherScanMintedTokenTxResult with EquatableMixin {
     String? input,
     String? confirmations,
   }) {
-    return EtherScanMintedTokenTxResult(
+    return BscScanMintedTokenTxResult(
       blockNumber: blockNumber ?? this.blockNumber,
       timeStamp: timeStamp ?? this.timeStamp,
       hash: hash ?? this.hash,
@@ -172,8 +172,8 @@ class EtherScanMintedTokenTxResult with EquatableMixin {
     };
   }
 
-  factory EtherScanMintedTokenTxResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanMintedTokenTxResult(
+  factory BscScanMintedTokenTxResult.fromMap(Map<String, dynamic> map) {
+    return BscScanMintedTokenTxResult(
       blockNumber: map['blockNumber'],
       timeStamp: map['timeStamp'],
       hash: map['hash'],
@@ -198,8 +198,8 @@ class EtherScanMintedTokenTxResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanMintedTokenTxResult.fromJson(String source) =>
-      EtherScanMintedTokenTxResult.fromMap(json.decode(source));
+  factory BscScanMintedTokenTxResult.fromJson(String source) =>
+      BscScanMintedTokenTxResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

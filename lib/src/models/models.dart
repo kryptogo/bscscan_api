@@ -12,7 +12,7 @@ export 'transaction/tx_status.dart';
 
 /// Stats Models
 export 'stats/block_reward_model.dart';
-export 'stats/eth_price_model.dart';
+export 'stats/bnb_price_model.dart';
 export 'stats/supply_model.dart';
 
 /// Proxy Models

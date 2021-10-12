@@ -1,18 +1,18 @@
-import 'package:etherscan_api/src/etherscan_api.dart';
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/models/models.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/models/models.dart';
 
-extension EthProxy on EtherscanAPI {
+extension BscProxy on BscscanAPI {
   /// Returns the number of most recent block
   ///
   /// Example
   ///
   ///```
-  /// var block = eth.blockNumber();
+  /// var block = bsc.blockNumber();
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> blockNumber() async {
+  Future<BscScanRpcResponseModel> blockNumber() async {
     const module = 'proxy';
     const action = 'eth_blockNumber';
 
@@ -23,8 +23,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -35,10 +35,10 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var blockNumber = eth.getBlockByNumber(tag: '0x10d4f');
+  /// var blockNumber = bsc.getBlockByNumber(tag: '0x10d4f');
   /// ```
 
-  Future<EtherScanBlockByNumberModel> getBlockByNumber({
+  Future<BscScanBlockByNumberModel> getBlockByNumber({
     required String? tag,
   }) async {
     const module = 'proxy';
@@ -54,45 +54,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanBlockByNumberModel.empty(),
-      (r) => EtherScanBlockByNumberModel.fromJson(r),
-    );
-  }
-
-  /// Returns information about a uncle by block number.
-  ///
-  /// `tag` - Tag to look up
-  ///
-  /// `index` - Index
-  ///
-  /// Example
-  ///
-  /// ```dart
-  /// var res = eth.getUncleByBlockNumberAndIndex(
-  ///    tag: '0x210A9B',
-  ///    index: '0x0'
-  /// );
-  /// ```
-  ///
-
-  Future<EtherScanBlockByNumberModel> getUncleByBlockNumberAndIndex({
-    required String? tag,
-    required String? index,
-  }) async {
-    const module = 'proxy';
-    const action = 'eth_getUncleByBlockNumberAndIndex';
-
-    Map<String, dynamic>? query = {
-      'tag': tag,
-      'module': module,
-      'action': action,
-      'index': index,
-      'apiKey': apiKey,
-    };
-
-    return (await get(query)).fold(
-      (l) => EtherScanBlockByNumberModel.empty(),
-      (r) => EtherScanBlockByNumberModel.fromJson(r),
+      (l) => BscScanBlockByNumberModel.empty(),
+      (r) => BscScanBlockByNumberModel.fromJson(r),
     );
   }
 
@@ -103,13 +66,13 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getBlockTransactionCountByNumber(
+  /// var res = bsc.getBlockTransactionCountByNumber(
   ///     tag:'0x10FB78'
   /// );
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> getBlockTransactionCountByNumber({
+  Future<BscScanRpcResponseModel> getBlockTransactionCountByNumber({
     required String? tag,
   }) async {
     const module = 'proxy';
@@ -122,8 +85,8 @@ extension EthProxy on EtherscanAPI {
       'apiKey': apiKey,
     };
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -134,13 +97,13 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getTransactionByHash(
+  /// var res = bsc.getTransactionByHash(
   ///     txhash: '0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1'
   /// );
   /// ```
   ///
 
-  Future<EtherScanTxByHashModel> getTransactionByHash({
+  Future<BscScanTxByHashModel> getTransactionByHash({
     required String? txhash,
   }) async {
     const module = 'proxy';
@@ -154,8 +117,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanTxByHashModel.empty(),
-      (r) => EtherScanTxByHashModel.fromJson(r),
+      (l) => BscScanTxByHashModel.empty(),
+      (r) => BscScanTxByHashModel.fromJson(r),
     );
   }
 
@@ -168,14 +131,14 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getTransactionByBlockNumberAndIndex(
+  /// var res = bsc.getTransactionByBlockNumberAndIndex(
   ///    tag: '0x10d4f',
   ///    index: '0x0'
   /// );
   /// ```
   ///
 
-  Future<EtherScanTxByHashModel> getTransactionByBlockNumberAndIndex({
+  Future<BscScanTxByHashModel> getTransactionByBlockNumberAndIndex({
     required String? tag,
     required String? index,
   }) async {
@@ -190,8 +153,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanTxByHashModel.empty(),
-      (r) => EtherScanTxByHashModel.fromJson(r),
+      (l) => BscScanTxByHashModel.empty(),
+      (r) => BscScanTxByHashModel.fromJson(r),
     );
   }
 
@@ -202,14 +165,14 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getTransactionCount(
+  /// var res = bsc.getTransactionCount(
   ///     address: '0x2910543af39aba0cd09dbb2d50200b3e800a63d2',
   ///     tag: 'latest'
   /// );
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> getTransactionCount({
+  Future<BscScanRpcResponseModel> getTransactionCount({
     required String? address,
     String? tag,
   }) async {
@@ -228,8 +191,8 @@ extension EthProxy on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -240,7 +203,7 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.sendRawTransaction(
+  /// var res = bsc.sendRawTransaction(
   ///   hex: '0xf904808000831cfde080'
   /// );
   /// ```
@@ -272,13 +235,13 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getTransactionReceipt(
+  /// var res = bsc.getTransactionReceipt(
   ///     txhash: '0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1'
   /// );
   /// ```
   ///
 
-  Future<EtherScanTxReceiptModel> getTransactionReceipt({
+  Future<BscScanTxReceiptModel> getTransactionReceipt({
     required String? txhash,
   }) async {
     const module = 'proxy';
@@ -292,8 +255,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanTxReceiptModel.empty(),
-      (r) => EtherScanTxReceiptModel.fromJson(r),
+      (l) => BscScanTxReceiptModel.empty(),
+      (r) => BscScanTxReceiptModel.fromJson(r),
     );
   }
 
@@ -308,7 +271,7 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.call(
+  /// var res = bsc.call(
   ///     to: '0xAEEF46DB4855E25702F8237E8f403FddcaF931C0',
   ///     data: '0x70a08231000000000000000000000000e16359506c028e51f16be38986ec5746251e9724',
   ///     tag: 'latest'
@@ -316,7 +279,7 @@ extension EthProxy on EtherscanAPI {
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> call({
+  Future<BscScanRpcResponseModel> call({
     required String? to,
     required String? data,
     String? tag,
@@ -337,8 +300,8 @@ extension EthProxy on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -351,14 +314,14 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getCode(
+  /// var res = bsc.getCode(
   ///     address: '0xf75e354c5edc8efed9b59ee9f67a80845ade7d0c',
   ///     tag: 'latest'
   /// );
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> getCode({
+  Future<BscScanRpcResponseModel> getCode({
     required String address,
     String? tag,
   }) async {
@@ -377,8 +340,8 @@ extension EthProxy on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -393,7 +356,7 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.getStorageAt(
+  /// var res = bsc.getStorageAt(
   ///     address: '0x6e03d9cce9d60f3e9f2597e13cd4c54c55330cfd',
   ///     position:'0x0',
   ///     tag: 'latest'
@@ -401,7 +364,7 @@ extension EthProxy on EtherscanAPI {
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> getStorageAt({
+  Future<BscScanRpcResponseModel> getStorageAt({
     required String address,
     required String position,
     String? tag,
@@ -422,19 +385,19 @@ extension EthProxy on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
   /// Returns the current price per gas in wei.
   ///
   /// ```dart
-  /// var gasprice = eth.gasPrice();
+  /// var gasprice = bsc.gasPrice();
   /// ```
   ///
 
-  Future<EtherScanRpcResponseModel> gasPrice() async {
+  Future<BscScanRpcResponseModel> gasPrice() async {
     const module = 'proxy';
     const action = 'eth_gasPrice';
     Map<String, dynamic>? query = {
@@ -444,8 +407,8 @@ extension EthProxy on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 
@@ -458,7 +421,7 @@ extension EthProxy on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var res = eth.estimateGas(
+  /// var res = bsc.estimateGas(
   ///     from: '0xdf4221b931b6ad4f4f221e2eb03913bd4368d0ba',
   ///     to: '0x109aa384b8786e55abfa1f0ac6cb0561e0a06e94',
   ///);
@@ -466,7 +429,7 @@ extension EthProxy on EtherscanAPI {
   ///```
   ///
 
-  Future<EtherScanRpcResponseModel> estimateGas({
+  Future<BscScanRpcResponseModel> estimateGas({
     required String? to,
     required String? from,
     required String? data,
@@ -483,8 +446,8 @@ extension EthProxy on EtherscanAPI {
       'data': data,
     };
     return (await get(query)).fold(
-      (l) => EtherScanRpcResponseModel.empty(),
-      (r) => EtherScanRpcResponseModel.fromJson(r),
+      (l) => BscScanRpcResponseModel.empty(),
+      (r) => BscScanRpcResponseModel.fromJson(r),
     );
   }
 }

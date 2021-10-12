@@ -1,9 +1,9 @@
-import 'package:etherscan_api/src/models/models.dart';
+import 'package:bscscan_api/src/models/models.dart';
 
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/etherscan_api.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
 
-extension EthBlock on EtherscanAPI {
+extension BscBlock on BscscanAPI {
   ///
   /// Find the block reward for a given address and block
   ///
@@ -12,7 +12,7 @@ extension EthBlock on EtherscanAPI {
   /// `blockno` - Block number
   ///
 
-  Future<EtherScanBlockRewardModel> getBlockReward({
+  Future<BscScanBlockRewardModel> getBlockReward({
     String? address,
     Object? blockno = 0,
   }) async {
@@ -34,8 +34,8 @@ extension EthBlock on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanBlockRewardModel.empty(),
-      (r) => EtherScanBlockRewardModel.fromJson(r),
+      (l) => BscScanBlockRewardModel.empty(),
+      (r) => BscScanBlockRewardModel.fromJson(r),
     );
   }
 }

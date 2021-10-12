@@ -2,23 +2,23 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanSupplyModel with EquatableMixin {
+class BscScanSupplyModel with EquatableMixin {
   final String status;
   final String message;
   final String result;
 
-  EtherScanSupplyModel({
+  BscScanSupplyModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanSupplyModel copyWith({
+  BscScanSupplyModel copyWith({
     String? status,
     String? message,
     String? result,
   }) {
-    return EtherScanSupplyModel(
+    return BscScanSupplyModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -33,16 +33,16 @@ class EtherScanSupplyModel with EquatableMixin {
     };
   }
 
-  factory EtherScanSupplyModel.empty() {
-    return EtherScanSupplyModel(
+  factory BscScanSupplyModel.empty() {
+    return BscScanSupplyModel(
       status: 'empty',
       message: '',
       result: '',
     );
   }
 
-  factory EtherScanSupplyModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanSupplyModel(
+  factory BscScanSupplyModel.fromMap(Map<String, dynamic> map) {
+    return BscScanSupplyModel(
       status: map['status'],
       message: map['message'],
       result: map['result'],
@@ -51,8 +51,8 @@ class EtherScanSupplyModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanSupplyModel.fromJson(String source) =>
-      EtherScanSupplyModel.fromMap(json.decode(source));
+  factory BscScanSupplyModel.fromJson(String source) =>
+      BscScanSupplyModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

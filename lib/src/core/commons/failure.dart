@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 
-class EtherScanFailure extends Equatable {
+class BscScanFailure extends Equatable {
   final String message;
   final int code;
 
-  EtherScanFailure({this.message = '', this.code = -1});
+  BscScanFailure({this.message = '', this.code = -1});
 
   @override
   bool? get stringify => true;

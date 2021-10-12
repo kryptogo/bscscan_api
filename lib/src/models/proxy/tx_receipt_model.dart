@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanTxReceiptModel with EquatableMixin {
+class BscScanTxReceiptModel with EquatableMixin {
   final String jsonrpc;
   final int id;
-  final EtherScanTxReceiptResult result;
-  EtherScanTxReceiptModel({
+  final BscScanTxReceiptResult result;
+  BscScanTxReceiptModel({
     required this.jsonrpc,
     required this.id,
     required this.result,
   });
 
-  EtherScanTxReceiptModel copyWith({
+  BscScanTxReceiptModel copyWith({
     String? jsonrpc,
     int? id,
-    EtherScanTxReceiptResult? result,
+    BscScanTxReceiptResult? result,
   }) {
-    return EtherScanTxReceiptModel(
+    return BscScanTxReceiptModel(
       jsonrpc: jsonrpc ?? this.jsonrpc,
       id: id ?? this.id,
       result: result ?? this.result,
@@ -32,26 +32,26 @@ class EtherScanTxReceiptModel with EquatableMixin {
     };
   }
 
-  factory EtherScanTxReceiptModel.empty() {
-    return EtherScanTxReceiptModel(
+  factory BscScanTxReceiptModel.empty() {
+    return BscScanTxReceiptModel(
       jsonrpc: '',
       id: 0,
-      result: EtherScanTxReceiptResult.empty(),
+      result: BscScanTxReceiptResult.empty(),
     );
   }
 
-  factory EtherScanTxReceiptModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxReceiptModel(
+  factory BscScanTxReceiptModel.fromMap(Map<String, dynamic> map) {
+    return BscScanTxReceiptModel(
       jsonrpc: map['jsonrpc'],
       id: map['id'],
-      result: EtherScanTxReceiptResult.fromMap(map['result']),
+      result: BscScanTxReceiptResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxReceiptModel.fromJson(String source) =>
-      EtherScanTxReceiptModel.fromMap(json.decode(source));
+  factory BscScanTxReceiptModel.fromJson(String source) =>
+      BscScanTxReceiptModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -60,7 +60,7 @@ class EtherScanTxReceiptModel with EquatableMixin {
   List<Object> get props => [jsonrpc, id, result];
 }
 
-class EtherScanTxReceiptResult with EquatableMixin {
+class BscScanTxReceiptResult with EquatableMixin {
   final String blockHash;
   final String blockNumber;
   final Object? contractAddress;
@@ -69,12 +69,11 @@ class EtherScanTxReceiptResult with EquatableMixin {
   final String gasUsed;
   final List<Log>? logs;
   final String logsBloom;
-  final String root;
   final String to;
   final String transactionHash;
   final String transactionIndex;
   final String type;
-  EtherScanTxReceiptResult({
+  BscScanTxReceiptResult({
     required this.blockHash,
     required this.blockNumber,
     required this.contractAddress,
@@ -83,14 +82,13 @@ class EtherScanTxReceiptResult with EquatableMixin {
     required this.gasUsed,
     required this.logs,
     required this.logsBloom,
-    required this.root,
     required this.to,
     required this.transactionHash,
     required this.transactionIndex,
     required this.type,
   });
 
-  EtherScanTxReceiptResult copyWith({
+  BscScanTxReceiptResult copyWith({
     String? blockHash,
     String? blockNumber,
     Object? contractAddress,
@@ -99,13 +97,12 @@ class EtherScanTxReceiptResult with EquatableMixin {
     String? gasUsed,
     List<Log>? logs,
     String? logsBloom,
-    String? root,
     String? to,
     String? transactionHash,
     String? transactionIndex,
     String? type,
   }) {
-    return EtherScanTxReceiptResult(
+    return BscScanTxReceiptResult(
       blockHash: blockHash ?? this.blockHash,
       blockNumber: blockNumber ?? this.blockNumber,
       contractAddress: contractAddress ?? this.contractAddress,
@@ -114,7 +111,6 @@ class EtherScanTxReceiptResult with EquatableMixin {
       gasUsed: gasUsed ?? this.gasUsed,
       logs: logs ?? this.logs,
       logsBloom: logsBloom ?? this.logsBloom,
-      root: root ?? this.root,
       to: to ?? this.to,
       transactionHash: transactionHash ?? this.transactionHash,
       transactionIndex: transactionIndex ?? this.transactionIndex,
@@ -132,7 +128,6 @@ class EtherScanTxReceiptResult with EquatableMixin {
       'gasUsed': gasUsed,
       'logs': logs?.map((x) => x.toMap()).toList(),
       'logsBloom': logsBloom,
-      'root': root,
       'to': to,
       'transactionHash': transactionHash,
       'transactionIndex': transactionIndex,
@@ -140,8 +135,8 @@ class EtherScanTxReceiptResult with EquatableMixin {
     };
   }
 
-  factory EtherScanTxReceiptResult.empty() {
-    return EtherScanTxReceiptResult(
+  factory BscScanTxReceiptResult.empty() {
+    return BscScanTxReceiptResult(
       blockHash: '',
       blockNumber: '',
       contractAddress: '',
@@ -150,7 +145,6 @@ class EtherScanTxReceiptResult with EquatableMixin {
       gasUsed: '',
       logs: [],
       logsBloom: '',
-      root: '',
       to: '',
       transactionHash: '',
       transactionIndex: '',
@@ -158,8 +152,8 @@ class EtherScanTxReceiptResult with EquatableMixin {
     );
   }
 
-  factory EtherScanTxReceiptResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxReceiptResult(
+  factory BscScanTxReceiptResult.fromMap(Map<String, dynamic> map) {
+    return BscScanTxReceiptResult(
       blockHash: map['blockHash'],
       blockNumber: map['blockNumber'],
       contractAddress: map['contractAddress'],
@@ -168,7 +162,6 @@ class EtherScanTxReceiptResult with EquatableMixin {
       gasUsed: map['gasUsed'],
       logs: List<Log>.from(map['logs']?.map((x) => Log.fromMap(x))),
       logsBloom: map['logsBloom'],
-      root: map['root'],
       to: map['to'],
       transactionHash: map['transactionHash'],
       transactionIndex: map['transactionIndex'],
@@ -178,8 +171,8 @@ class EtherScanTxReceiptResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxReceiptResult.fromJson(String source) =>
-      EtherScanTxReceiptResult.fromMap(json.decode(source));
+  factory BscScanTxReceiptResult.fromJson(String source) =>
+      BscScanTxReceiptResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -195,7 +188,6 @@ class EtherScanTxReceiptResult with EquatableMixin {
       gasUsed,
       logs ?? [],
       logsBloom,
-      root,
       to,
       transactionHash,
       transactionIndex,

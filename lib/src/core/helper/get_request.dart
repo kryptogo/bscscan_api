@@ -2,23 +2,20 @@ import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:etherscan_api/etherscan_api.dart';
-import 'package:etherscan_api/src/core/utils/logger.dart';
+import 'package:bscscan_api/bscscan_api.dart';
+import 'package:bscscan_api/src/core/utils/logger.dart';
 
 import '../commons/failure.dart';
 
-const ETH_API_URLS = {
-  'mainnet': 'https://api.etherscan.io',
-  'ropsten': 'https://api-ropsten.etherscan.io',
-  'kovan': 'https://api-kovan.etherscan.io',
-  'rinkeby': 'https://api-rinkeby.etherscan.io',
-  'homestead': 'https://api.etherscan.io'
+const BSC_API_URLS = {
+  'mainnet': 'https://api.bscscan.com',
+  'testnet': 'https://api-testnet.bscscan.com',
 };
 
-extension GetRequest on EtherscanAPI {
+extension GetRequest on BscscanAPI {
   /// Runs query
-  /// returns [Future<Either<EtherScanFailure, String>>]
-  Future<Either<EtherScanFailure, String>> get<T>(
+  /// returns [Future<Either<BscScanFailure, String>>]
+  Future<Either<BscScanFailure, String>> get<T>(
     Map<String, dynamic>? query,
   ) async {
     try {
@@ -46,7 +43,7 @@ extension GetRequest on EtherscanAPI {
           // Log error response
           print('Error: Null Response\n');
         }
-        return Left(EtherScanFailure(message: 'Null Response'));
+        return Left(BscScanFailure(message: 'Null Response'));
       }
 
       var status = res.data['status'];
@@ -56,7 +53,7 @@ extension GetRequest on EtherscanAPI {
           print('Error: ${res.data}');
         }
 
-        return Left(EtherScanFailure(message: '${res.data}'));
+        return Left(BscScanFailure(message: '${res.data}'));
       }
 
       if (enableLogs == true) {
@@ -71,7 +68,7 @@ extension GetRequest on EtherscanAPI {
         /// Log error response
         print('Error: $msg');
       }
-      return Left(EtherScanFailure(message: msg));
+      return Left(BscScanFailure(message: msg));
     }
   }
 }

@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanBlockByNumberModel with EquatableMixin {
+class BscScanBlockByNumberModel with EquatableMixin {
   final String jsonrpc;
   final int id;
-  final EtherScanBlockNumberResult result;
-  EtherScanBlockByNumberModel({
+  final BscScanBlockNumberResult result;
+  BscScanBlockByNumberModel({
     required this.jsonrpc,
     required this.id,
     required this.result,
   });
 
-  EtherScanBlockByNumberModel copyWith({
+  BscScanBlockByNumberModel copyWith({
     String? jsonrpc,
     int? id,
-    EtherScanBlockNumberResult? result,
+    BscScanBlockNumberResult? result,
   }) {
-    return EtherScanBlockByNumberModel(
+    return BscScanBlockByNumberModel(
       jsonrpc: jsonrpc ?? this.jsonrpc,
       id: id ?? this.id,
       result: result ?? this.result,
@@ -32,26 +32,26 @@ class EtherScanBlockByNumberModel with EquatableMixin {
     };
   }
 
-  factory EtherScanBlockByNumberModel.empty() {
-    return EtherScanBlockByNumberModel(
+  factory BscScanBlockByNumberModel.empty() {
+    return BscScanBlockByNumberModel(
       jsonrpc: '',
       id: 0,
-      result: EtherScanBlockNumberResult.empty(),
+      result: BscScanBlockNumberResult.empty(),
     );
   }
 
-  factory EtherScanBlockByNumberModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanBlockByNumberModel(
+  factory BscScanBlockByNumberModel.fromMap(Map<String, dynamic> map) {
+    return BscScanBlockByNumberModel(
       jsonrpc: map['jsonrpc'],
       id: map['id'],
-      result: EtherScanBlockNumberResult.fromMap(map['result']),
+      result: BscScanBlockNumberResult.fromMap(map['result']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBlockByNumberModel.fromJson(String source) =>
-      EtherScanBlockByNumberModel.fromMap(json.decode(source));
+  factory BscScanBlockByNumberModel.fromJson(String source) =>
+      BscScanBlockByNumberModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -60,7 +60,7 @@ class EtherScanBlockByNumberModel with EquatableMixin {
   List<Object> get props => [jsonrpc, id, result];
 }
 
-class EtherScanBlockNumberResult with EquatableMixin {
+class BscScanBlockNumberResult with EquatableMixin {
   final String difficulty;
   final String extraData;
   final String gasLimit;
@@ -78,11 +78,11 @@ class EtherScanBlockNumberResult with EquatableMixin {
   final String stateRoot;
   final String timestamp;
   final String? totalDifficulty;
-  final List<EtherScanBlockNumberResultTransaction>? transactions;
+  final List<BscScanBlockNumberResultTransaction>? transactions;
   final String transactionsRoot;
   final List<dynamic> uncles;
 
-  EtherScanBlockNumberResult({
+  BscScanBlockNumberResult({
     required this.difficulty,
     required this.extraData,
     required this.gasLimit,
@@ -105,7 +105,7 @@ class EtherScanBlockNumberResult with EquatableMixin {
     required this.uncles,
   });
 
-  EtherScanBlockNumberResult copyWith({
+  BscScanBlockNumberResult copyWith({
     String? difficulty,
     String? extraData,
     String? gasLimit,
@@ -123,11 +123,11 @@ class EtherScanBlockNumberResult with EquatableMixin {
     String? stateRoot,
     String? timestamp,
     String? totalDifficulty,
-    List<EtherScanBlockNumberResultTransaction>? transactions,
+    List<BscScanBlockNumberResultTransaction>? transactions,
     String? transactionsRoot,
     List<dynamic>? uncles,
   }) {
-    return EtherScanBlockNumberResult(
+    return BscScanBlockNumberResult(
       difficulty: difficulty ?? this.difficulty,
       extraData: extraData ?? this.extraData,
       gasLimit: gasLimit ?? this.gasLimit,
@@ -176,8 +176,8 @@ class EtherScanBlockNumberResult with EquatableMixin {
     };
   }
 
-  factory EtherScanBlockNumberResult.empty() {
-    return EtherScanBlockNumberResult(
+  factory BscScanBlockNumberResult.empty() {
+    return BscScanBlockNumberResult(
       difficulty: '',
       extraData: '',
       gasLimit: '',
@@ -201,8 +201,8 @@ class EtherScanBlockNumberResult with EquatableMixin {
     );
   }
 
-  factory EtherScanBlockNumberResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanBlockNumberResult(
+  factory BscScanBlockNumberResult.fromMap(Map<String, dynamic> map) {
+    return BscScanBlockNumberResult(
       difficulty: map['difficulty'],
       extraData: map['extraData'],
       gasLimit: map['gasLimit'],
@@ -220,9 +220,9 @@ class EtherScanBlockNumberResult with EquatableMixin {
       stateRoot: map['stateRoot'],
       timestamp: map['timestamp'],
       totalDifficulty: map['totalDifficulty'],
-      transactions: List<EtherScanBlockNumberResultTransaction>.from(
+      transactions: List<BscScanBlockNumberResultTransaction>.from(
           (map['transactions'] ?? [])
-              ?.map((x) => EtherScanBlockNumberResultTransaction.fromMap(x))),
+              ?.map((x) => BscScanBlockNumberResultTransaction.fromMap(x))),
       transactionsRoot: map['transactionsRoot'],
       uncles: List<dynamic>.from(map['uncles']),
     );
@@ -230,8 +230,8 @@ class EtherScanBlockNumberResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBlockNumberResult.fromJson(String source) =>
-      EtherScanBlockNumberResult.fromMap(json.decode(source));
+  factory BscScanBlockNumberResult.fromJson(String source) =>
+      BscScanBlockNumberResult.fromMap(json.decode(source));
   @override
   bool get stringify => true;
 
@@ -262,7 +262,7 @@ class EtherScanBlockNumberResult with EquatableMixin {
   }
 }
 
-class EtherScanBlockNumberResultTransaction with EquatableMixin {
+class BscScanBlockNumberResultTransaction with EquatableMixin {
   final String blockHash;
   final String blockNumber;
   final String from;
@@ -279,7 +279,7 @@ class EtherScanBlockNumberResultTransaction with EquatableMixin {
   final String r;
   final String s;
 
-  EtherScanBlockNumberResultTransaction({
+  BscScanBlockNumberResultTransaction({
     required this.blockHash,
     required this.blockNumber,
     required this.from,
@@ -297,7 +297,7 @@ class EtherScanBlockNumberResultTransaction with EquatableMixin {
     required this.s,
   });
 
-  EtherScanBlockNumberResultTransaction copyWith({
+  BscScanBlockNumberResultTransaction copyWith({
     String? blockHash,
     String? blockNumber,
     String? from,
@@ -314,7 +314,7 @@ class EtherScanBlockNumberResultTransaction with EquatableMixin {
     String? r,
     String? s,
   }) {
-    return EtherScanBlockNumberResultTransaction(
+    return BscScanBlockNumberResultTransaction(
       blockHash: blockHash ?? this.blockHash,
       blockNumber: blockNumber ?? this.blockNumber,
       from: from ?? this.from,
@@ -353,9 +353,9 @@ class EtherScanBlockNumberResultTransaction with EquatableMixin {
     };
   }
 
-  factory EtherScanBlockNumberResultTransaction.fromMap(
+  factory BscScanBlockNumberResultTransaction.fromMap(
       Map<String, dynamic> map) {
-    return EtherScanBlockNumberResultTransaction(
+    return BscScanBlockNumberResultTransaction(
       blockHash: map['blockHash'],
       blockNumber: map['blockNumber'],
       from: map['from'],
@@ -376,8 +376,8 @@ class EtherScanBlockNumberResultTransaction with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBlockNumberResultTransaction.fromJson(String source) =>
-      EtherScanBlockNumberResultTransaction.fromMap(json.decode(source));
+  factory BscScanBlockNumberResultTransaction.fromJson(String source) =>
+      BscScanBlockNumberResultTransaction.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

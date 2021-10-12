@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanMintedBlocksModel with EquatableMixin {
+class BscScanMintedBlocksModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherScanMintedBlocksResult>? result;
-  EtherScanMintedBlocksModel({
+  final List<BscScanMintedBlocksResult>? result;
+  BscScanMintedBlocksModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanMintedBlocksModel copyWith({
+  BscScanMintedBlocksModel copyWith({
     String? status,
     String? message,
-    List<EtherScanMintedBlocksResult>? result,
+    List<BscScanMintedBlocksResult>? result,
   }) {
-    return EtherScanMintedBlocksModel(
+    return BscScanMintedBlocksModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,27 +32,27 @@ class EtherScanMintedBlocksModel with EquatableMixin {
     };
   }
 
-  factory EtherScanMintedBlocksModel.empty() {
-    return EtherScanMintedBlocksModel(
+  factory BscScanMintedBlocksModel.empty() {
+    return BscScanMintedBlocksModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherScanMintedBlocksModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanMintedBlocksModel(
+  factory BscScanMintedBlocksModel.fromMap(Map<String, dynamic> map) {
+    return BscScanMintedBlocksModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherScanMintedBlocksResult>.from(
-          map['result']?.map((x) => EtherScanMintedBlocksResult.fromMap(x))),
+      result: List<BscScanMintedBlocksResult>.from(
+          map['result']?.map((x) => BscScanMintedBlocksResult.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanMintedBlocksModel.fromJson(String source) =>
-      EtherScanMintedBlocksModel.fromMap(json.decode(source));
+  factory BscScanMintedBlocksModel.fromJson(String source) =>
+      BscScanMintedBlocksModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
@@ -61,22 +61,22 @@ class EtherScanMintedBlocksModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherScanMintedBlocksResult with EquatableMixin {
+class BscScanMintedBlocksResult with EquatableMixin {
   final String blockNumber;
   final String timeStamp;
   final String blockReward;
-  EtherScanMintedBlocksResult({
+  BscScanMintedBlocksResult({
     required this.blockNumber,
     required this.timeStamp,
     required this.blockReward,
   });
 
-  EtherScanMintedBlocksResult copyWith({
+  BscScanMintedBlocksResult copyWith({
     String? blockNumber,
     String? timeStamp,
     String? blockReward,
   }) {
-    return EtherScanMintedBlocksResult(
+    return BscScanMintedBlocksResult(
       blockNumber: blockNumber ?? this.blockNumber,
       timeStamp: timeStamp ?? this.timeStamp,
       blockReward: blockReward ?? this.blockReward,
@@ -91,8 +91,8 @@ class EtherScanMintedBlocksResult with EquatableMixin {
     };
   }
 
-  factory EtherScanMintedBlocksResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanMintedBlocksResult(
+  factory BscScanMintedBlocksResult.fromMap(Map<String, dynamic> map) {
+    return BscScanMintedBlocksResult(
       blockNumber: map['blockNumber'],
       timeStamp: map['timeStamp'],
       blockReward: map['blockReward'],
@@ -101,8 +101,8 @@ class EtherScanMintedBlocksResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanMintedBlocksResult.fromJson(String source) =>
-      EtherScanMintedBlocksResult.fromMap(json.decode(source));
+  factory BscScanMintedBlocksResult.fromJson(String source) =>
+      BscScanMintedBlocksResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

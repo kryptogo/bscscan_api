@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanLogModel with EquatableMixin {
+class BscScanLogModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherScanLogResult>? result;
-  EtherScanLogModel({
+  final List<BscScanLogResult>? result;
+  BscScanLogModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanLogModel copyWith({
+  BscScanLogModel copyWith({
     String? status,
     String? message,
-    List<EtherScanLogResult>? result,
+    List<BscScanLogResult>? result,
   }) {
-    return EtherScanLogModel(
+    return BscScanLogModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,21 +32,21 @@ class EtherScanLogModel with EquatableMixin {
     };
   }
 
-  factory EtherScanLogModel.empty() {
-    return EtherScanLogModel(
+  factory BscScanLogModel.empty() {
+    return BscScanLogModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherScanLogModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanLogModel(
+  factory BscScanLogModel.fromMap(Map<String, dynamic> map) {
+    return BscScanLogModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherScanLogResult>.from(
+      result: List<BscScanLogResult>.from(
         map['result']?.map(
-          (x) => EtherScanLogResult.fromMap(x),
+          (x) => BscScanLogResult.fromMap(x),
         ),
       ),
     );
@@ -54,8 +54,8 @@ class EtherScanLogModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanLogModel.fromJson(String source) =>
-      EtherScanLogModel.fromMap(json.decode(source));
+  factory BscScanLogModel.fromJson(String source) =>
+      BscScanLogModel.fromMap(json.decode(source));
 
   @override
   int get hashCode => status.hashCode ^ message.hashCode ^ result.hashCode;
@@ -67,7 +67,7 @@ class EtherScanLogModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherScanLogResult with EquatableMixin {
+class BscScanLogResult with EquatableMixin {
   final String address;
   final List<String>? topics;
   final String data;
@@ -78,7 +78,7 @@ class EtherScanLogResult with EquatableMixin {
   final String logIndex;
   final String transactionHash;
   final String transactionIndex;
-  EtherScanLogResult({
+  BscScanLogResult({
     required this.address,
     required this.topics,
     required this.data,
@@ -91,7 +91,7 @@ class EtherScanLogResult with EquatableMixin {
     required this.transactionIndex,
   });
 
-  EtherScanLogResult copyWith({
+  BscScanLogResult copyWith({
     String? address,
     List<String>? topics,
     String? data,
@@ -103,7 +103,7 @@ class EtherScanLogResult with EquatableMixin {
     String? transactionHash,
     String? transactionIndex,
   }) {
-    return EtherScanLogResult(
+    return BscScanLogResult(
       address: address ?? this.address,
       topics: topics ?? this.topics,
       data: data ?? this.data,
@@ -132,8 +132,8 @@ class EtherScanLogResult with EquatableMixin {
     };
   }
 
-  factory EtherScanLogResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanLogResult(
+  factory BscScanLogResult.fromMap(Map<String, dynamic> map) {
+    return BscScanLogResult(
       address: map['address'],
       topics: List<String>.from(map['topics']),
       data: map['data'],
@@ -149,8 +149,8 @@ class EtherScanLogResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanLogResult.fromJson(String source) =>
-      EtherScanLogResult.fromMap(json.decode(source));
+  factory BscScanLogResult.fromJson(String source) =>
+      BscScanLogResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

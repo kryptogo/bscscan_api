@@ -1,8 +1,8 @@
-import 'package:etherscan_api/src/etherscan_api.dart';
-import 'package:etherscan_api/src/core/helper/get_request.dart';
-import 'package:etherscan_api/src/models/models.dart';
+import 'package:bscscan_api/src/bscscan_api.dart';
+import 'package:bscscan_api/src/core/helper/get_request.dart';
+import 'package:bscscan_api/src/models/models.dart';
 
-extension EthAccount on EtherscanAPI {
+extension BscAccount on BscscanAPI {
   /// Returns the amount of Tokens a specific account owns.
   ///
   /// `address` - Contract address
@@ -14,7 +14,7 @@ extension EthAccount on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  ///     final data = await eth.tokenBalance(
+  ///     final data = await bsc.tokenBalance(
   ///       address: '0x4366ddc115d8cf213c564da36e64c8ebaa30cdbd',
   ///       contractAddress: '0xe0b7927c4af23765cb51314a0e0521a9645f0e2a' // DGD contract address
   ///       tokenname: '',
@@ -22,7 +22,7 @@ extension EthAccount on EtherscanAPI {
   /// ```
   ///
 
-  Future<EtherScanTokenBalanceModel> tokenBalance({
+  Future<BscScanTokenBalanceModel> tokenBalance({
     required String? address,
     required String? contractAddress,
     String? tokenName,
@@ -50,8 +50,8 @@ extension EthAccount on EtherscanAPI {
       query.putIfAbsent('address', () => address);
     }
     return (await get(query)).fold(
-      (l) => EtherScanTokenBalanceModel.empty(),
-      (r) => EtherScanTokenBalanceModel.fromJson(r),
+      (l) => BscScanTokenBalanceModel.empty(),
+      (r) => BscScanTokenBalanceModel.fromJson(r),
     );
   }
 
@@ -63,18 +63,17 @@ extension EthAccount on EtherscanAPI {
   ///
   /// ```dart
   ///
-  /// final balance = eth.balance(addresses: [
+  /// final balance = bsc.balance(addresses: [
   ///     '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae'
   /// ]);
   /// ```
   ///
 
-  Future<EtherScanBalanceModel> balance({
+  Future<BscScanBalanceModel> balance({
     required List<String> addresses,
   }) async {
     const module = 'account';
     var action = 'balance';
-    const tag = 'latest';
     var address = '';
 
     if (addresses.isNotEmpty) {
@@ -86,13 +85,12 @@ extension EthAccount on EtherscanAPI {
       'module': module,
       'action': action,
       'apiKey': apiKey,
-      'tag': tag,
       'address': address,
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanBalanceModel.empty(),
-      (r) => EtherScanBalanceModel.fromJson(r),
+      (l) => BscScanBalanceModel.empty(),
+      (r) => BscScanBalanceModel.fromJson(r),
     );
   }
 
@@ -111,16 +109,16 @@ extension EthAccount on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// final txlist = eth.txListInternal('0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170');
+  /// final txlist = bsc.txListInternal('0x40eb908387324f2b575b4879cd9d7188f69c8fc9d87c901b9e2daaea4b442170');
   /// ```
   ///
 
-  Future<EtherScanTxInternalModel> txListInternal({
+  Future<BscScanTxInternalModel> txListInternal({
     String? txhash,
     String? address,
     Object startblock = 0,
     String? endblock = 'latest',
-    EtherSort sort = EtherSort.asc,
+    BscSort sort = BscSort.asc,
   }) async {
     const module = 'account';
     const action = 'txlistinternal';
@@ -146,8 +144,8 @@ extension EthAccount on EtherscanAPI {
     query['txhash'] = txhash;
 
     return (await get(query)).fold(
-      (l) => EtherScanTxInternalModel.empty(),
-      (r) => EtherScanTxInternalModel.fromJson(r),
+      (l) => BscScanTxInternalModel.empty(),
+      (r) => BscScanTxInternalModel.fromJson(r),
     );
   }
 
@@ -168,19 +166,19 @@ extension EthAccount on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var txlist = eth.txList(address:
+  /// var txlist = bsc.txList(address:
   ///   '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae'
   /// );
   /// ```
   ///
 
-  Future<EtherScanTxListModel> txList({
+  Future<BscScanTxListModel> txList({
     required String? address,
     Object startblock = 0,
     String? endblock,
     int page = 1,
     int offset = 100,
-    EtherSort sort = EtherSort.asc,
+    BscSort sort = BscSort.asc,
   }) async {
     const module = 'account';
     const action = 'txlist';
@@ -202,8 +200,8 @@ extension EthAccount on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanTxListModel.empty(),
-      (r) => EtherScanTxListModel.fromJson(r),
+      (l) => BscScanTxListModel.empty(),
+      (r) => BscScanTxListModel.fromJson(r),
     );
   }
 
@@ -212,14 +210,14 @@ extension EthAccount on EtherscanAPI {
   /// Example
   ///
   /// ```dart
-  /// var txlist = eth.getMinedBlocks(
+  /// var txlist = bsc.getMinedBlocks(
   ///   address:'0x9dd134d14d1e65f84b706d6f205cd5b1cd03a46b'
   /// );
   ///```
   /// `address` - Transaction hash
   ///
 
-  Future<EtherScanMintedBlocksModel> getMinedBlocks({
+  Future<BscScanMintedBlocksModel> getMinedBlocks({
     required String address,
   }) async {
     const module = 'account';
@@ -233,12 +231,12 @@ extension EthAccount on EtherscanAPI {
     };
 
     return (await get(query)).fold(
-      (l) => EtherScanMintedBlocksModel.empty(),
-      (r) => EtherScanMintedBlocksModel.fromJson(r),
+      (l) => BscScanMintedBlocksModel.empty(),
+      (r) => BscScanMintedBlocksModel.fromJson(r),
     );
   }
 
-  /// Get a list of "ERC20 - Token Transfer Events" by Address
+  /// Get a list of "BEP20 - Token Transfer Events" by Address
   ///
   /// `address` - Account address
   ///
@@ -252,12 +250,12 @@ extension EthAccount on EtherscanAPI {
   ///
   /// `sort` - Sort asc/desc
   ///
-  /// `contractAddress` - Address of ERC20 token contract (if not specified lists transfers for all tokens)
+  /// `contractAddress` - Address of BEP20 token contract (if not specified lists transfers for all tokens)
   ///
   /// Example
   ///
   /// ```dart
-  /// var txlist = eth.tokenTx(
+  /// var txlist = bsc.tokenTx(
   ///   address: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae',
   ///   contractAddress: '0x5F988D968cb76c34C87e6924Cc1Ef1dCd4dE75da'
   /// );
@@ -266,14 +264,14 @@ extension EthAccount on EtherscanAPI {
   /// (Returns up to a maximum of the last 10000 transactions only)
   ///
 
-  Future<EtherScanMintedTokenTxModel> tokenTx({
+  Future<BscScanMintedTokenTxModel> tokenTx({
     required String? address,
     String? contractAddress,
     Object startblock = 0,
     String endblock = 'latest',
     int page = 1,
     int offset = 100,
-    EtherSort sort = EtherSort.asc,
+    BscSort sort = BscSort.asc,
   }) async {
     const module = 'account';
     const action = 'tokentx';
@@ -295,12 +293,12 @@ extension EthAccount on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherScanMintedTokenTxModel.empty(),
-      (r) => EtherScanMintedTokenTxModel.fromJson(r),
+      (l) => BscScanMintedTokenTxModel.empty(),
+      (r) => BscScanMintedTokenTxModel.fromJson(r),
     );
   }
 
-  /// Get a list of "ERC721 - Token Transfer Events" by Address
+  /// Get a list of "BEP721 - Token Transfer Events" by Address
   ///
   /// `address` - Account address
   ///
@@ -314,12 +312,12 @@ extension EthAccount on EtherscanAPI {
   ///
   /// `sort` - Sort asc/desc
   ///
-  /// `contractAddress` - Address of ERC20 token contract (if not specified lists transfers for all tokens)
+  /// `contractAddress` - Address of BEP20 token contract (if not specified lists transfers for all tokens)
   ///
   /// Example
   ///
   /// ```dart
-  /// var txlist = eth.tokenTx(
+  /// var txlist = bsc.tokenTx(
   ///   address: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae',
   ///   contractAddress: '0x5F988D968cb76c34C87e6924Cc1Ef1dCd4dE75da'
   /// );
@@ -328,14 +326,14 @@ extension EthAccount on EtherscanAPI {
   /// (Returns up to a maximum of the last 10000 transactions only)
   ///
 
-  Future<EtherscanTokenFftxModel> tokennFttx({
+  Future<BscscanTokenFftxModel> tokennFttx({
     required String? address,
     String? contractAddress,
     Object startblock = 0,
     String endblock = 'latest',
     int page = 1,
     int offset = 100,
-    EtherSort sort = EtherSort.asc,
+    BscSort sort = BscSort.asc,
   }) async {
     const module = 'account';
     const action = 'tokennfttx';
@@ -357,8 +355,8 @@ extension EthAccount on EtherscanAPI {
     }
 
     return (await get(query)).fold(
-      (l) => EtherscanTokenFftxModel.empty(),
-      (r) => EtherscanTokenFftxModel.fromJson(r),
+      (l) => BscscanTokenFftxModel.empty(),
+      (r) => BscscanTokenFftxModel.fromJson(r),
     );
   }
 }

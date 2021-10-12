@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherscanTokenFftxModel with EquatableMixin {
+class BscscanTokenFftxModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherscanTokenFftxResult>? result;
-  EtherscanTokenFftxModel({
+  final List<BscscanTokenFftxResult>? result;
+  BscscanTokenFftxModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherscanTokenFftxModel copyWith({
+  BscscanTokenFftxModel copyWith({
     String? status,
     String? message,
-    List<EtherscanTokenFftxResult>? result,
+    List<BscscanTokenFftxResult>? result,
   }) {
-    return EtherscanTokenFftxModel(
+    return BscscanTokenFftxModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,21 +32,21 @@ class EtherscanTokenFftxModel with EquatableMixin {
     };
   }
 
-  factory EtherscanTokenFftxModel.empty() {
-    return EtherscanTokenFftxModel(
+  factory BscscanTokenFftxModel.empty() {
+    return BscscanTokenFftxModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherscanTokenFftxModel.fromMap(Map<String, dynamic> map) {
-    return EtherscanTokenFftxModel(
+  factory BscscanTokenFftxModel.fromMap(Map<String, dynamic> map) {
+    return BscscanTokenFftxModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherscanTokenFftxResult>.from(
+      result: List<BscscanTokenFftxResult>.from(
         map['result']?.map(
-          (x) => EtherscanTokenFftxResult.fromMap(x),
+          (x) => BscscanTokenFftxResult.fromMap(x),
         ),
       ),
     );
@@ -54,8 +54,8 @@ class EtherscanTokenFftxModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherscanTokenFftxModel.fromJson(String source) =>
-      EtherscanTokenFftxModel.fromMap(json.decode(source));
+  factory BscscanTokenFftxModel.fromJson(String source) =>
+      BscscanTokenFftxModel.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;
@@ -64,7 +64,7 @@ class EtherscanTokenFftxModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherscanTokenFftxResult with EquatableMixin {
+class BscscanTokenFftxResult with EquatableMixin {
   final String blockNumber;
   final String timeStamp;
   final String hash;
@@ -84,7 +84,7 @@ class EtherscanTokenFftxResult with EquatableMixin {
   final String cumulativeGasUsed;
   final String input;
   final String confirmations;
-  EtherscanTokenFftxResult({
+  BscscanTokenFftxResult({
     required this.blockNumber,
     required this.timeStamp,
     required this.hash,
@@ -106,7 +106,7 @@ class EtherscanTokenFftxResult with EquatableMixin {
     required this.confirmations,
   });
 
-  EtherscanTokenFftxResult copyWith({
+  BscscanTokenFftxResult copyWith({
     String? blockNumber,
     String? timeStamp,
     String? hash,
@@ -127,7 +127,7 @@ class EtherscanTokenFftxResult with EquatableMixin {
     String? input,
     String? confirmations,
   }) {
-    return EtherscanTokenFftxResult(
+    return BscscanTokenFftxResult(
       blockNumber: blockNumber ?? this.blockNumber,
       timeStamp: timeStamp ?? this.timeStamp,
       hash: hash ?? this.hash,
@@ -174,8 +174,8 @@ class EtherscanTokenFftxResult with EquatableMixin {
     };
   }
 
-  factory EtherscanTokenFftxResult.fromMap(Map<String, dynamic> map) {
-    return EtherscanTokenFftxResult(
+  factory BscscanTokenFftxResult.fromMap(Map<String, dynamic> map) {
+    return BscscanTokenFftxResult(
       blockNumber: map['blockNumber'],
       timeStamp: map['timeStamp'],
       hash: map['hash'],
@@ -200,8 +200,8 @@ class EtherscanTokenFftxResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherscanTokenFftxResult.fromJson(String source) =>
-      EtherscanTokenFftxResult.fromMap(json.decode(source));
+  factory BscscanTokenFftxResult.fromJson(String source) =>
+      BscscanTokenFftxResult.fromMap(json.decode(source));
 
   @override
   bool get stringify => true;

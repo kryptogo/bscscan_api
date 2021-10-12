@@ -1,11 +1,11 @@
-import 'package:etherscan_api/etherscan_api.dart';
-import 'package:etherscan_api/src/models/contract/abi_model.dart';
-import 'package:etherscan_api/src/models/models.dart';
+import 'package:bscscan_api/bscscan_api.dart';
+import 'package:bscscan_api/src/models/contract/abi_model.dart';
+import 'package:bscscan_api/src/models/models.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('api', () {
-    var api = EtherscanAPI(
+    var api = BscscanAPI(
       apiKey: 'YourApiKey',
     );
 
@@ -16,7 +16,7 @@ void main() {
         );
 
         await txlist.then((res) {
-          expect(res, isNot(EtherScanMintedBlocksModel.empty()));
+          expect(res, isNot(BscScanMintedBlocksModel.empty()));
         });
       });
 
@@ -26,7 +26,7 @@ void main() {
             contractAddress: '0x57d90b64a1a57749b0f932f1a3395792e12e7055');
 
         await supply.then((res) {
-          expect(res, isNot(EtherScanTokenBalanceModel.empty()));
+          expect(res, isNot(BscScanTokenBalanceModel.empty()));
         });
       });
 
@@ -35,7 +35,7 @@ void main() {
             api.txList(address: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae');
 
         await txlist.then((res) {
-          expect(res, isNot(EtherScanTxListModel.empty()));
+          expect(res, isNot(BscScanTxListModel.empty()));
         });
       });
 
@@ -45,7 +45,7 @@ void main() {
                 '0x8902e33b4da704b55d25e72af717b73a7f768b9b801422b6f0753429edaf2aae');
 
         await txlist.then((res) {
-          expect(res, isNot(EtherScanTxInternalModel.empty()));
+          expect(res, isNot(BscScanTxInternalModel.empty()));
         });
       });
 
@@ -53,7 +53,7 @@ void main() {
         var txlist = api.txListInternal(
             address: '0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae');
         await txlist.then((res) {
-          expect(res, isNot(EtherScanTxInternalModel.empty()));
+          expect(res, isNot(BscScanTxInternalModel.empty()));
         });
       });
 
@@ -61,7 +61,7 @@ void main() {
         var balance = api
             .balance(addresses: ['0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae']);
         await balance.then((res) {
-          expect(res, isNot(EtherScanBalanceModel.empty()));
+          expect(res, isNot(BscScanBalanceModel.empty()));
         });
       });
 
@@ -69,7 +69,7 @@ void main() {
         var balance = api
             .balance(addresses: ['0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae']);
         await balance.then((res) {
-          expect(res, isNot(EtherScanBalanceModel.empty()));
+          expect(res, isNot(BscScanBalanceModel.empty()));
         });
       });
 
@@ -82,23 +82,23 @@ void main() {
         );
 
         await txlist.then((res) {
-          expect(res, isNot(EtherScanMintedTokenTxModel.empty()));
+          expect(res, isNot(BscScanMintedTokenTxModel.empty()));
         });
       });
     });
 
     group('stats', () {
-      test('.ethSupply()', () async {
-        var supply = api.ethSupply();
+      test('.bnbSupply()', () async {
+        var supply = api.bnbSupply();
         await supply.then((res) {
-          expect(res, isNot(EtherScanSupplyModel.empty()));
+          expect(res, isNot(BscScanSupplyModel.empty()));
         });
       });
 
       test('.tokenSupply() by tokenname', () async {
         var supply = api.tokenSupply(tokenName: 'MKR');
         await supply.then((res) {
-          expect(res, isNot(EtherScanSupplyModel.empty()));
+          expect(res, isNot(BscScanSupplyModel.empty()));
         });
       });
       test('.tokenSupply() by address', () async {
@@ -106,14 +106,14 @@ void main() {
           contractAddress: '0x57d90b64a1a57749b0f932f1a3395792e12e7055',
         );
         await supply.then((res) {
-          expect(res, isNot(EtherScanSupplyModel.empty()));
+          expect(res, isNot(BscScanSupplyModel.empty()));
         });
       });
 
-      test('.ethPrice()', () async {
-        var price = api.ethPrice();
+      test('.bnbPrice()', () async {
+        var price = api.bnbPrice();
         await price.then((res) {
-          expect(res, isNot(EtherScanPriceModel.empty()));
+          expect(res, isNot(BscScanPriceModel.empty()));
         });
       });
     });
@@ -122,21 +122,21 @@ void main() {
       test('.getblockReward()', () {
         var blockreward = api.getBlockReward();
         blockreward.then((res) {
-          expect(res, isNot(EtherScanBlockRewardModel.empty()));
+          expect(res, isNot(BscScanBlockRewardModel.empty()));
         });
       });
     });
 
     group('transaction', () {
-      test('.getStatus()', () {
-        var status = api.getStatus(
-            txhash:
-                '0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4463375ff7ffb490aa0032f3a');
+      // test('.getStatus()', () {
+      //   var status = api.getStatus(
+      //       txhash:
+      //           '0x15f8e5ea1079d9a0bb04a4c58ae5fe7654b5b2b4463375ff7ffb490aa0032f3a');
 
-        status.then((res) {
-          expect(res, isNot(EtherScanTxStatusModel.empty()));
-        });
-      });
+      //   status.then((res) {
+      //     expect(res, isNot(BscScanTxStatusModel.empty()));
+      //   });
+      // });
     });
 
     // test for bug #31
@@ -145,9 +145,9 @@ void main() {
     group('contract', () {
       test('getabi for a contract that is not verified by etherscan: error',
           () async {
-        var api = EtherscanAPI(
+        var api = BscscanAPI(
           apiKey: 'YourApiKey',
-          chain: EthChain.ropsten,
+          chain: BscChain.testnet,
           timeout: Duration(milliseconds: 10000),
         );
 
@@ -155,7 +155,7 @@ void main() {
             api.getAbi(address: '0xBB9bc244D798123fDe783fCc1C72d3Bb8C189413');
 
         await abi.then((v) {
-          expect(v, EtherScanAbiModel.empty());
+          expect(v, BscScanAbiModel.empty());
         });
       });
     });
@@ -165,7 +165,7 @@ void main() {
         var res = api.blockNumber();
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -173,16 +173,7 @@ void main() {
         var res = api.getBlockByNumber(tag: '0x10d4f');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanBlockByNumberModel.empty()));
-        });
-      });
-
-      test('.getUncleByBlockNumberAndIndex()', () async {
-        var res =
-            api.getUncleByBlockNumberAndIndex(tag: '0x210A9B', index: '0x0');
-
-        await res.then((res) {
-          expect(res, isNot(EtherScanBlockByNumberModel.empty()));
+          expect(res, isNot(BscScanBlockByNumberModel.empty()));
         });
       });
 
@@ -190,7 +181,7 @@ void main() {
         var res = api.getBlockTransactionCountByNumber(tag: '0x10FB78');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -200,7 +191,7 @@ void main() {
                 '0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanTxByHashModel.empty()));
+          expect(res, isNot(BscScanTxByHashModel.empty()));
         });
       });
 
@@ -211,7 +202,7 @@ void main() {
         );
 
         await res.then((res) {
-          expect(res, isNot(EtherScanTxByHashModel.empty()));
+          expect(res, isNot(BscScanTxByHashModel.empty()));
         });
       });
 
@@ -220,7 +211,7 @@ void main() {
             address: '0x2910543af39aba0cd09dbb2d50200b3e800a63d2');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -237,7 +228,7 @@ void main() {
             txhash:
                 '0x1e2910a262b1008d0616a0beb24c1a491d78771baa54a33e66065e03b1f46bc1');
         res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -249,7 +240,7 @@ void main() {
         );
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -259,7 +250,7 @@ void main() {
             tag: 'latest');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -270,7 +261,7 @@ void main() {
             tag: 'latest');
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -278,7 +269,7 @@ void main() {
         var res = api.gasPrice();
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
 
@@ -290,7 +281,7 @@ void main() {
         );
 
         await res.then((res) {
-          expect(res, isNot(EtherScanRpcResponseModel.empty()));
+          expect(res, isNot(BscScanRpcResponseModel.empty()));
         });
       });
     });

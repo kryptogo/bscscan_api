@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanBalanceModel with EquatableMixin {
+class BscScanBalanceModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherScanBalanceResult>? result;
-  EtherScanBalanceModel({
+  final List<BscScanBalanceResult>? result;
+  BscScanBalanceModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanBalanceModel copyWith({
+  BscScanBalanceModel copyWith({
     String? status,
     String? message,
-    List<EtherScanBalanceResult>? result,
+    List<BscScanBalanceResult>? result,
   }) {
-    return EtherScanBalanceModel(
+    return BscScanBalanceModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,27 +32,27 @@ class EtherScanBalanceModel with EquatableMixin {
     };
   }
 
-  factory EtherScanBalanceModel.empty() {
-    return EtherScanBalanceModel(
+  factory BscScanBalanceModel.empty() {
+    return BscScanBalanceModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherScanBalanceModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanBalanceModel(
+  factory BscScanBalanceModel.fromMap(Map<String, dynamic> map) {
+    return BscScanBalanceModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherScanBalanceResult>.from(
-          map['result']?.map((x) => EtherScanBalanceResult.fromMap(x))),
+      result: List<BscScanBalanceResult>.from(
+          map['result']?.map((x) => BscScanBalanceResult.fromMap(x))),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBalanceModel.fromJson(String source) =>
-      EtherScanBalanceModel.fromMap(json.decode(source));
+  factory BscScanBalanceModel.fromJson(String source) =>
+      BscScanBalanceModel.fromMap(json.decode(source));
   @override
   bool? get stringify => true;
 
@@ -60,19 +60,19 @@ class EtherScanBalanceModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherScanBalanceResult with EquatableMixin {
+class BscScanBalanceResult with EquatableMixin {
   final String account;
   final String balance;
-  EtherScanBalanceResult({
+  BscScanBalanceResult({
     required this.account,
     required this.balance,
   });
 
-  EtherScanBalanceResult copyWith({
+  BscScanBalanceResult copyWith({
     String? account,
     String? balance,
   }) {
-    return EtherScanBalanceResult(
+    return BscScanBalanceResult(
       account: account ?? this.account,
       balance: balance ?? this.balance,
     );
@@ -85,8 +85,8 @@ class EtherScanBalanceResult with EquatableMixin {
     };
   }
 
-  factory EtherScanBalanceResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanBalanceResult(
+  factory BscScanBalanceResult.fromMap(Map<String, dynamic> map) {
+    return BscScanBalanceResult(
       account: map['account'],
       balance: map['balance'],
     );
@@ -94,8 +94,8 @@ class EtherScanBalanceResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanBalanceResult.fromJson(String source) =>
-      EtherScanBalanceResult.fromMap(json.decode(source));
+  factory BscScanBalanceResult.fromJson(String source) =>
+      BscScanBalanceResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

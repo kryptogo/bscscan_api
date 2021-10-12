@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanTxInternalModel with EquatableMixin {
+class BscScanTxInternalModel with EquatableMixin {
   final String status;
   final String message;
-  final List<EtherScanTxInternalResult>? result;
-  EtherScanTxInternalModel({
+  final List<BscScanTxInternalResult>? result;
+  BscScanTxInternalModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanTxInternalModel copyWith({
+  BscScanTxInternalModel copyWith({
     String? status,
     String? message,
-    List<EtherScanTxInternalResult>? result,
+    List<BscScanTxInternalResult>? result,
   }) {
-    return EtherScanTxInternalModel(
+    return BscScanTxInternalModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,21 +32,21 @@ class EtherScanTxInternalModel with EquatableMixin {
     };
   }
 
-  factory EtherScanTxInternalModel.empty() {
-    return EtherScanTxInternalModel(
+  factory BscScanTxInternalModel.empty() {
+    return BscScanTxInternalModel(
       status: 'empty',
       message: '',
       result: [],
     );
   }
 
-  factory EtherScanTxInternalModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxInternalModel(
+  factory BscScanTxInternalModel.fromMap(Map<String, dynamic> map) {
+    return BscScanTxInternalModel(
       status: map['status'],
       message: map['message'],
-      result: List<EtherScanTxInternalResult>.from(
+      result: List<BscScanTxInternalResult>.from(
         map['result']?.map(
-          (x) => EtherScanTxInternalResult.fromMap(x),
+          (x) => BscScanTxInternalResult.fromMap(x),
         ),
       ),
     );
@@ -54,8 +54,8 @@ class EtherScanTxInternalModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxInternalModel.fromJson(String source) =>
-      EtherScanTxInternalModel.fromMap(json.decode(source));
+  factory BscScanTxInternalModel.fromJson(String source) =>
+      BscScanTxInternalModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
@@ -64,7 +64,7 @@ class EtherScanTxInternalModel with EquatableMixin {
   List<Object> get props => [status, message, result ?? []];
 }
 
-class EtherScanTxInternalResult with EquatableMixin {
+class BscScanTxInternalResult with EquatableMixin {
   final String blockNumber;
   final String timeStamp;
   final String hash;
@@ -79,7 +79,7 @@ class EtherScanTxInternalResult with EquatableMixin {
   final String traceId;
   final String isError;
   final String errCode;
-  EtherScanTxInternalResult({
+  BscScanTxInternalResult({
     required this.blockNumber,
     required this.timeStamp,
     required this.hash,
@@ -96,7 +96,7 @@ class EtherScanTxInternalResult with EquatableMixin {
     required this.errCode,
   });
 
-  EtherScanTxInternalResult copyWith({
+  BscScanTxInternalResult copyWith({
     String? blockNumber,
     String? timeStamp,
     String? hash,
@@ -112,7 +112,7 @@ class EtherScanTxInternalResult with EquatableMixin {
     String? isError,
     String? errCode,
   }) {
-    return EtherScanTxInternalResult(
+    return BscScanTxInternalResult(
       blockNumber: blockNumber ?? this.blockNumber,
       timeStamp: timeStamp ?? this.timeStamp,
       hash: hash ?? this.hash,
@@ -149,8 +149,8 @@ class EtherScanTxInternalResult with EquatableMixin {
     };
   }
 
-  factory EtherScanTxInternalResult.fromMap(Map<String, dynamic> map) {
-    return EtherScanTxInternalResult(
+  factory BscScanTxInternalResult.fromMap(Map<String, dynamic> map) {
+    return BscScanTxInternalResult(
       blockNumber: map['blockNumber'],
       timeStamp: map['timeStamp'],
       hash: map['hash'],
@@ -170,8 +170,8 @@ class EtherScanTxInternalResult with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTxInternalResult.fromJson(String source) =>
-      EtherScanTxInternalResult.fromMap(json.decode(source));
+  factory BscScanTxInternalResult.fromJson(String source) =>
+      BscScanTxInternalResult.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;

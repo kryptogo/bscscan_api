@@ -2,22 +2,22 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class EtherScanTokenBalanceModel with EquatableMixin {
+class BscScanTokenBalanceModel with EquatableMixin {
   final String status;
   final String message;
   final String result;
-  EtherScanTokenBalanceModel({
+  BscScanTokenBalanceModel({
     required this.status,
     required this.message,
     required this.result,
   });
 
-  EtherScanTokenBalanceModel copyWith({
+  BscScanTokenBalanceModel copyWith({
     String? status,
     String? message,
     String? result,
   }) {
-    return EtherScanTokenBalanceModel(
+    return BscScanTokenBalanceModel(
       status: status ?? this.status,
       message: message ?? this.message,
       result: result ?? this.result,
@@ -32,16 +32,16 @@ class EtherScanTokenBalanceModel with EquatableMixin {
     };
   }
 
-  factory EtherScanTokenBalanceModel.fromMap(Map<String, dynamic> map) {
-    return EtherScanTokenBalanceModel(
+  factory BscScanTokenBalanceModel.fromMap(Map<String, dynamic> map) {
+    return BscScanTokenBalanceModel(
       status: map['status'],
       message: map['message'],
       result: map['result'],
     );
   }
 
-  factory EtherScanTokenBalanceModel.empty() {
-    return EtherScanTokenBalanceModel(
+  factory BscScanTokenBalanceModel.empty() {
+    return BscScanTokenBalanceModel(
       status: 'empty',
       message: '',
       result: '',
@@ -50,8 +50,8 @@ class EtherScanTokenBalanceModel with EquatableMixin {
 
   String toJson() => json.encode(toMap());
 
-  factory EtherScanTokenBalanceModel.fromJson(String source) =>
-      EtherScanTokenBalanceModel.fromMap(json.decode(source));
+  factory BscScanTokenBalanceModel.fromJson(String source) =>
+      BscScanTokenBalanceModel.fromMap(json.decode(source));
 
   @override
   bool? get stringify => true;
