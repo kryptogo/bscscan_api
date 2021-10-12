@@ -1,4 +1,4 @@
-# Etherscan Dart API
+# Bscscan Dart API
 
 [![license](https://img.shields.io/github/license/Zfinix/etherscan_api.svg)](https://github.com/kryptogo/etherscan_api/blob/main/LICENSE.md)
 [![GitHub tag](https://img.shields.io/github/tag/Zfinix/etherscan_api.svg)](https://github.com/kryptogo/etherscan_api)
