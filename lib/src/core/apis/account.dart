@@ -1,6 +1,7 @@
 import 'package:bscscan_api/src/bscscan_api.dart';
 import 'package:bscscan_api/src/core/helper/get_request.dart';
 import 'package:bscscan_api/src/models/models.dart';
+import 'package:flutter/foundation.dart';
 
 extension BscAccount on BscscanAPI {
   /// Returns the amount of Tokens a specific account owns.
@@ -145,7 +146,7 @@ extension BscAccount on BscscanAPI {
 
     return (await get(query)).fold(
       (l) => BscScanTxInternalModel.empty(),
-      (r) => BscScanTxInternalModel.fromJson(r),
+      (r) async => await compute(_computeBscScanTxInternalModel, r),
     );
   }
 
@@ -201,7 +202,7 @@ extension BscAccount on BscscanAPI {
 
     return (await get(query)).fold(
       (l) => BscScanTxListModel.empty(),
-      (r) => BscScanTxListModel.fromJson(r),
+      (r) async => await compute(_computeBscScanTxListModel, r),
     );
   }
 
@@ -294,7 +295,7 @@ extension BscAccount on BscscanAPI {
 
     return (await get(query)).fold(
       (l) => BscScanMintedTokenTxModel.empty(),
-      (r) => BscScanMintedTokenTxModel.fromJson(r),
+      (r) async => await compute(_computeBscScanMintedTokenTxModel, r),
     );
   }
 
@@ -359,4 +360,17 @@ extension BscAccount on BscscanAPI {
       (r) => BscscanTokenFftxModel.fromJson(r),
     );
   }
+}
+
+Future<BscScanTxListModel> _computeBscScanTxListModel(String s) async {
+  return BscScanTxListModel.fromJson(s);
+}
+
+Future<BscScanTxInternalModel> _computeBscScanTxInternalModel(String s) async {
+  return BscScanTxInternalModel.fromJson(s);
+}
+
+Future<BscScanMintedTokenTxModel> _computeBscScanMintedTokenTxModel(
+    String s) async {
+  return BscScanMintedTokenTxModel.fromJson(s);
 }
