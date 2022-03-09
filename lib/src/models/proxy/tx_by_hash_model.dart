@@ -202,8 +202,8 @@ class BscScanTxByHashModelResult with EquatableMixin {
   @override
   List<Object> get props {
     return [
-      blockHash,
-      blockNumber,
+      blockHash ?? "",
+      blockNumber ?? "",
       from,
       gas,
       gasPrice,
@@ -211,7 +211,7 @@ class BscScanTxByHashModelResult with EquatableMixin {
       input,
       nonce,
       to,
-      transactionIndex,
+      transactionIndex ?? "",
       value,
       type,
       v,
