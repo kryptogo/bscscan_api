@@ -61,8 +61,8 @@ class BscScanTxByHashModel with EquatableMixin {
 }
 
 class BscScanTxByHashModelResult with EquatableMixin {
-  final String blockHash;
-  final String blockNumber;
+  final String? blockHash;
+  final String? blockNumber;
   final String from;
   final String gas;
   final String gasPrice;
@@ -70,7 +70,7 @@ class BscScanTxByHashModelResult with EquatableMixin {
   final String input;
   final String nonce;
   final String to;
-  final String transactionIndex;
+  final String? transactionIndex;
   final String value;
   final String type;
   final String v;
@@ -78,8 +78,8 @@ class BscScanTxByHashModelResult with EquatableMixin {
   final String s;
 
   BscScanTxByHashModelResult({
-    required this.blockHash,
-    required this.blockNumber,
+    this.blockHash,
+    this.blockNumber,
     required this.from,
     required this.gas,
     required this.gasPrice,
@@ -87,7 +87,7 @@ class BscScanTxByHashModelResult with EquatableMixin {
     required this.input,
     required this.nonce,
     required this.to,
-    required this.transactionIndex,
+    this.transactionIndex,
     required this.value,
     required this.type,
     required this.v,
