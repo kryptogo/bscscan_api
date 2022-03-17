@@ -277,7 +277,7 @@ class BscScanBlockNumberResultTransaction with EquatableMixin {
   final String hash;
   final String input;
   final String nonce;
-  final String to;
+  final String? to;
   final String transactionIndex;
   final String value;
   final String type;
@@ -294,7 +294,7 @@ class BscScanBlockNumberResultTransaction with EquatableMixin {
     required this.hash,
     required this.input,
     required this.nonce,
-    required this.to,
+    this.to,
     required this.transactionIndex,
     required this.value,
     required this.type,
@@ -399,7 +399,7 @@ class BscScanBlockNumberResultTransaction with EquatableMixin {
       hash,
       input,
       nonce,
-      to,
+      to ?? "",
       transactionIndex,
       value,
       type,
