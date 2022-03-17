@@ -40,16 +40,16 @@ extension BscProxy on BscscanAPI {
 
   Future<BscScanBlockByNumberModel> getBlockByNumber({
     required String? tag,
+    bool? isFull,
   }) async {
     const module = 'proxy';
     const action = 'eth_getBlockByNumber';
-    const boolean = true;
 
     Map<String, dynamic>? query = {
       'tag': tag,
       'module': module,
       'action': action,
-      'boolean': boolean,
+      'boolean': isFull ?? false,
       'apiKey': apiKey,
     };
 

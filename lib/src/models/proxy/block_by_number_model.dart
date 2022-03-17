@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class BscScanBlockByNumberModel with EquatableMixin {
@@ -78,7 +79,7 @@ class BscScanBlockNumberResult with EquatableMixin {
   final String stateRoot;
   final String timestamp;
   final String? totalDifficulty;
-  final List<BscScanBlockNumberResultTransaction>? transactions;
+  final List<Either<BscScanBlockNumberResultTransaction, String>>? transactions;
   final String transactionsRoot;
   final List<dynamic> uncles;
 
@@ -123,7 +124,7 @@ class BscScanBlockNumberResult with EquatableMixin {
     String? stateRoot,
     String? timestamp,
     String? totalDifficulty,
-    List<BscScanBlockNumberResultTransaction>? transactions,
+    List<Either<BscScanBlockNumberResultTransaction, String>>? transactions,
     String? transactionsRoot,
     List<dynamic>? uncles,
   }) {
@@ -170,7 +171,8 @@ class BscScanBlockNumberResult with EquatableMixin {
       'stateRoot': stateRoot,
       'timestamp': timestamp,
       'totalDifficulty': totalDifficulty,
-      'transactions': transactions?.map((x) => x.toMap()).toList(),
+      'transactions':
+          transactions?.map((x) => x.fold((l) => l.toMap(), (r) => r)).toList(),
       'transactionsRoot': transactionsRoot,
       'uncles': uncles,
     };
@@ -220,9 +222,13 @@ class BscScanBlockNumberResult with EquatableMixin {
       stateRoot: map['stateRoot'],
       timestamp: map['timestamp'],
       totalDifficulty: map['totalDifficulty'],
-      transactions: List<BscScanBlockNumberResultTransaction>.from(
-          (map['transactions'] ?? [])
-              ?.map((x) => BscScanBlockNumberResultTransaction.fromMap(x))),
+      transactions:
+          List<Either<BscScanBlockNumberResultTransaction, String>>.from(
+              (map['transactions'] ?? [])
+                  ?.map<Either<BscScanBlockNumberResultTransaction, String>>(
+                      (x) => (x is String
+                          ? x
+                          : BscScanBlockNumberResultTransaction.fromMap(x)))),
       transactionsRoot: map['transactionsRoot'],
       uncles: List<dynamic>.from(map['uncles']),
     );
