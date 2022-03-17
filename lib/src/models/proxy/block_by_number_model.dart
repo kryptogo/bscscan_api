@@ -225,10 +225,11 @@ class BscScanBlockNumberResult with EquatableMixin {
       transactions:
           List<Either<BscScanBlockNumberResultTransaction, String>>.from(
               (map['transactions'] ?? [])?.map<
-                      Either<BscScanBlockNumberResultTransaction, String>>(
-                  (x) => (x is String
-                      ? Right(x)
-                      : Left(BscScanBlockNumberResultTransaction.fromMap(x))))),
+                  Either<BscScanBlockNumberResultTransaction, String>>((x) => (x
+                          is String
+                      ? Right<BscScanBlockNumberResultTransaction, String>(x)
+                      : Left<BscScanBlockNumberResultTransaction, String>(
+                          BscScanBlockNumberResultTransaction.fromMap(x))))),
       transactionsRoot: map['transactionsRoot'],
       uncles: List<dynamic>.from(map['uncles']),
     );
