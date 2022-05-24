@@ -433,6 +433,7 @@ extension BscProxy on BscscanAPI {
     required String? to,
     required String? from,
     required String? data,
+    String? value,
   }) async {
     const module = 'proxy';
     const action = 'eth_estimateGas';
@@ -444,6 +445,7 @@ extension BscProxy on BscscanAPI {
       'to': to,
       'from': from,
       'data': data,
+      'value': value,
     };
     return (await get(query)).fold(
       (l) => BscScanRpcResponseModel.empty(),
